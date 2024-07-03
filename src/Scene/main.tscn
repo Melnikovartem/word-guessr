@@ -1,0 +1,120 @@
+[gd_scene load_steps=3 format=3 uid="uid://8n3gpu1kl4xo"]
+
+[ext_resource type="Script" path="res://Scene/main.gd" id="1_c1sqs"]
+[ext_resource type="Theme" uid="uid://causmmw5535fo" path="res://ui_theme.tres" id="2_yvsc7"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_c1sqs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -827.0
+offset_top = -1571.0
+offset_right = 874.0
+offset_bottom = 1477.0
+color = Color(0.337255, 0.388235, 0.619608, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Info_Group" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -244.0
+offset_top = 182.0
+offset_right = -204.0
+offset_bottom = 222.0
+
+[node name="AttemptsLabel" type="Label" parent="Info_Group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.875
+anchor_top = -26.325
+anchor_right = 11.325
+anchor_bottom = -25.525
+offset_left = -314.0
+offset_top = -492.0
+offset_right = -274.0
+offset_bottom = -469.0
+theme = ExtResource("2_yvsc7")
+text = "You have 5 / 5 attempts left"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MessageLabel" type="Label" parent="Info_Group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.925
+anchor_top = -26.3
+anchor_right = 12.025
+anchor_bottom = -25.5
+offset_left = -311.0
+offset_top = -425.0
+offset_right = -271.0
+offset_bottom = -402.0
+theme = ExtResource("2_yvsc7")
+text = "Words Must be  8 letters long"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Grid" type="VBoxContainer" parent="Info_Group"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = -242.0
+offset_right = 224.0
+offset_bottom = -202.0
+scale = Vector2(3, 3)
+metadata/_edit_use_anchors_ = true
+
+[node name="Input_Group" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GuessInput" type="LineEdit" parent="Input_Group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -9.475
+anchor_top = 19.05
+anchor_right = 13.0984
+anchor_bottom = 24.3
+offset_left = -101.0
+offset_top = 204.0
+offset_right = -33.9375
+offset_bottom = 235.0
+theme = ExtResource("2_yvsc7")
+metadata/_edit_use_anchors_ = true
+
+[node name="GuessButton" type="Button" parent="Input_Group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -12.975
+anchor_top = 36.025
+anchor_right = -7.2
+anchor_bottom = 37.425
+offset_left = 379.0
+offset_top = -189.0
+offset_right = 434.0
+offset_bottom = -158.0
+theme = ExtResource("2_yvsc7")
+theme_override_font_sizes/font_size = 40
+text = "Guess"
+metadata/_edit_use_anchors_ = true
+
+[node name="NewGameButton" type="Button" parent="Input_Group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.525
+anchor_top = -25.9
+anchor_right = 5.4
+anchor_bottom = -24.25
+offset_left = 288.0
+offset_top = -306.0
+offset_right = 378.0
+offset_bottom = -275.0
+theme = ExtResource("2_yvsc7")
+text = "START NEW GAME"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Input_Group/GuessButton" to="." method="_on_guess_button_pressed"]
+[connection signal="pressed" from="Input_Group/NewGameButton" to="." method="_on_new_game_button_pressed"]

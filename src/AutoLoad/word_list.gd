@@ -6,5 +6,5 @@ const DICTIONARY: PackedStringArray = ["abaci", "aback", "abaft", "abase", "abas
 
 
 func get_new_word() -> String:
-	var game_day := _days_between_dates(FIRST_DATE, Time.get_date_dict_from_system())
-	return WORDS[game_day % WORDS.size()]
+	var word_index = floor(randf() * WORDS.size())
+	return WORDS[word_index]
