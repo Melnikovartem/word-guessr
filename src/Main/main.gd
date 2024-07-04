@@ -12,9 +12,29 @@ var current_letter := 1
 @onready var word_panel := %WordPanel as WordPanel
 
 
+func _on_storage_get_completed(success, data):
+	if not success:
+		return
+	
+	print(success, data)
+	if data[0] != null and not data[0].is_empty():
+		word_to_guess = data[0]
+	
+	
+func _load_state():
+	Bridge.storage.get(["word"], _on_storage_get_completed)
+	
 func _ready():
 	randomize()
-	word_to_guess = word_list.get_new_word()
+	Bridge.advertisement.set_minimum_delay_between_interstitial(30)
+	_load_state()
+	if word_to_guess == null or word_to_guess.is_empty():
+		word_to_guess = word_list.get_new_word()
+		Bridge.storage.set(["word"], ["word_to_guess"])
+	print(word_to_guess)
+	
+func get_score(attempts_taken):
+	return globals.NUMBER_OF_ATTEMPTS - attempts_taken
 
 func _input(event: InputEvent):
 	var key_event := event as InputEventKey
@@ -38,7 +58,6 @@ func _input(event: InputEvent):
 			var attempt_result := check_word(word_attempt, word_to_guess)
 			if attempt_result[0] == globals.LetterState.NOT_CHECKED:
 				message.text = "Not in dictionary"
-				print(word_to_guess)
 				return
 			for i in range(globals.NUMBER_OF_LETTERS):
 				word_panel.update_color_panel(attempt_result[i], current_attempt, i + 1)
@@ -48,8 +67,9 @@ func _input(event: InputEvent):
 				set_process_input(false)
 				return
 			current_attempt += 1
-			if current_attempt > globals.NUMBER_OF_ROWS + 1:
+			if current_attempt > globals.NUMBER_OF_ATTEMPTS + 1:
 				message.text = "The word was: " + word_to_guess
+				Bridge.advertisement.show_rewarded()
 				set_process_input(false)
 				return
 			current_letter = 1

@@ -1,0 +1,406 @@
+[gd_scene load_steps=18 format=3 uid="uid://cgs3ocsniws7t"]
+
+[sub_resource type="GDScript" id="GDScript_by2q4"]
+resource_name = "igbgui"
+script/source = "extends Node
+#Instant Games Bridge by Mewton Games, GUI Node by Repin Publishing v2.0.alpha
+#Добавьте данную сцену как дочернюю там где вам необходим функционал IGB.
+#Отключение звука при сворачивании, показе interstitial и rewarded происходит автоматически.
+#platform
+@export var game_ready = false #поставте галочу, чтобы отправить сигнал ready в нужной сцене
+var vk_only = false #vk games, работает только на платформе vk
+var vk_direct_only = false #vk direct only, работает только на мобильной платформе vk direct
+var vk_play_only = false #vk play, работает только на vk play
+var yandex_only = false #yandex games, работает только на yandex играх
+var no_social = false #html5 платформа без интеграции с плагином
+#device
+var desktop = false #работает только на ПК
+var mobile = false #работает только на телефонах
+signal app_visible #сигнал при возвращении видимости игры после сворачивания
+signal app_hidden #сигнал при сворачивании игры
+#advertisement
+@export var show_banner = false #показать баннер
+@export var show_interstitial = false #поставьте галочу для показа interstitial, либо вызывайте ее при помощи AnimationPlayer
+@export var show_rewarded = false #поставьте галочу для показа rewarded, либо вызывайте ее при помощи AnimationPlayer
+signal get_reward #используйте сигнал \"get_reward\" для получения награды
+signal ad_open #сигнал при открытии interstitial и rewarded рекламы.
+signal ad_close #сигнал при закрытии interstitial и rewarded рекламы.
+#social
+@export var share_app = false #поставте галочу в сцене, где необходимо поделится приложением vk.
+@export var game_link: String #ссылка на игру, пример: https://vk.com/app123
+@export var join_community = false #приглашение в сообщество vk
+@export var community_id: String #id вашего сообщества vk, состоит только из цифр, пример: 123
+@export var vk_donut_check = false #включение проверки подписки на сообщество vk donut через переменную vk_donut_subscriber, так же требуется указать community_id
+var vk_donut_subscriber = false #проверка подписки на ваше сообщество через vk donut, true - когда есть подписка и false при ее отсутствии.
+@export var invite_friends = false #пригласить друга из vk
+@export var create_post = false #сделать пост на стене vk
+@export var post_message: String #текст вашего поста
+@export var post_attachments: String #ссылка или номер вложения к посту, например: photo-123 or video-123 etc.
+@export var add_to_favorites = false #добавить в избранное vk
+@export var rate = false #оценить приложение в yandex
+@export var open_catalog = false #открыть каталог игр в yandex
+@export var catalog_link: String #ссылка на страницу разработчика, пример: /games/developer?name= Не работает на iOS!
+#leaderboard
+@export var vk_direct_leaderboard = false #доступно только в vk direct, показывает только ваш результат
+var vk_direct_result: int #ваш результат который отобразится в окне vk direct
+@export var yandex_leaderboard = false #активация доски лидеров yandex
+var yandex_result: int #результат который отобразится на странице игры в yandex играх
+@export var yandex_leaderboard_name: String #техническое название лидерборда в который будет осуществляться запись
+#storage
+@export var data_key: Array[String] #выберете String для создания названия ключа
+@export var data_value: Array[String] #выберете любое значение для вашего ключа. ВНИМАНИЕ! Размер массива \"data_key\", должен совпадать с размером \"data_value\"
+@export var save_data = false #сохранение значений
+@export var load_data = false #загрузка значений
+signal data_loaded #проверка загрузки значений
+@export var delete_data = false #удаление значений
+
+func _ready() -> void:
+#game ready
+	if game_ready:
+		Bridge.platform.send_message(Bridge.PlatformMessage.GAME_READY)
+#connect states
+	Bridge.advertisement.banner_state_changed.connect(_banner_state)
+	Bridge.advertisement.interstitial_state_changed.connect(_interstitial_state)
+	Bridge.advertisement.rewarded_state_changed.connect(_rewarded_state)
+	Bridge.game.visibility_state_changed.connect(_visibility_state)
+#get current device
+	print(\"current device: \" + str(Bridge.device.type))
+#get current platform
+	print(\"current platform: \" + str(Bridge.platform.id))
+#get current language
+	print(\"current language: \" + str(Bridge.platform.language))
+#get player authorized
+	print(\"player authorized:\" + str(Bridge.player.is_authorized))
+#set language
+	if OS.get_name() == \"Web\":
+		TranslationServer.set_locale(Bridge.platform.language)
+#set platform visibility
+	if Bridge.platform.id == \"vk\":
+		vk_only = true
+	if Bridge.platform.id == \"vk\" and Bridge.device.type == \"mobile\":
+		vk_direct_only = true
+	if Bridge.platform.id == \"yandex\":
+		yandex_only = true
+	if Bridge.platform.id == \"vk_play\":
+		vk_play_only = true
+	if Bridge.platform.id == \"mock\":
+		no_social = true
+#set device visibility
+	if Bridge.device.type == \"desktop\":
+		desktop = true
+	if Bridge.device.type == \"mobile\":
+		mobile = true
+#vk donut check
+	if Bridge.platform.id == \"vk\":
+		if vk_donut_check:
+			JavaScriptBridge.eval(\"\"\"
+			let url = new URL(window.location.href)
+			let accessToken = url.searchParams.get('access_token')
+			bridge.platform.sdk.send('VKWebAppCallAPIMethod', {
+				method: 'donut.isDon',
+				params: {
+					owner_id: '-\"\"\"+str(community_id)+\"\"\"',
+					v: '5.131',
+					access_token: accessToken 
+				}})
+				.then((data) => { 
+					if (data.response) {
+						console
+						window.vk_donut_subscriber = true
+					}
+					else {
+						window.vk_donut_subscriber = false
+					}
+				})
+				.catch((error) => {
+					console.log(error)
+				})\"\"\")
+			await get_tree().create_timer(5).timeout
+			if JavaScriptBridge.get_interface(\"window\").vk_donut_subscriber == true:
+				vk_donut_subscriber = true
+			if JavaScriptBridge.get_interface(\"window\").vk_donut_subscriber == false:
+				vk_donut_subscriber = false
+			if vk_donut_subscriber:
+				print(\"vk donut subscription: true\")
+			else:
+				print(\"vk donut subscription: false\")
+				
+func _process(_delta: float) -> void:
+#advertisement
+	if show_banner:
+		$anim.play(\"show_banner\")
+	if show_interstitial:
+		$anim.play(\"interstitial\")
+	if show_rewarded:
+		$anim.play(\"rewarded\")
+#vk social
+	if vk_only:
+		if share_app:
+			$anim.play(\"share_app\")
+		if join_community:
+			$anim.play(\"join_community\")
+		if invite_friends:
+			$anim.play(\"invite_friends\")
+		if create_post:
+			$anim.play(\"create_post\")
+		if add_to_favorites:
+			$anim.play(\"add_to_favorites\")
+#vk direct leaderboard
+	if vk_direct_only:
+		if vk_direct_leaderboard:
+			$anim.play(\"vk_direct_leaderboard\")
+#yandex social
+	if yandex_only:
+		if rate:
+			$anim.play(\"rate\")
+		if open_catalog:
+			$anim.play(\"open_catalog\")
+#yandexleaderboard
+		if yandex_leaderboard:
+			$anim.play(\"yandex_leaderboard\")
+#storage
+	if load_data:
+		$anim.play(\"load_data\")
+	if save_data:
+		$anim.play(\"save_data\")
+	if delete_data:
+		$anim.play(\"delete_data\")
+
+func _finished(anim_name: StringName) -> void:
+#advertisement
+	if anim_name == \"show_banner\":
+		Bridge.advertisement.show_banner()
+		show_banner = false
+	if anim_name == \"interstitial\":
+		Bridge.advertisement.show_interstitial()
+		show_interstitial = false
+	if anim_name == \"rewarded\":
+		Bridge.advertisement.show_rewarded()
+		show_rewarded = false
+#vk social
+	if vk_only:
+		if anim_name == \"share_app\":
+			Bridge.social.share(Bridge.ShareVkOptions.new(game_link))
+			share_app = false
+		if anim_name == \"join_community\":
+			Bridge.social.join_community(Bridge.JoinCommunityVkOptions.new(community_id))
+			join_community = false
+		if anim_name == \"invite_friends\":
+			Bridge.social.invite_friends()
+			invite_friends = false
+		if anim_name == \"create_post\":
+			Bridge.social.create_post(Bridge.CreatePostVkOptions.new(post_message,post_attachments))
+			create_post = false
+		if anim_name == \"add_to_favorites\":
+			Bridge.social.add_to_favorites()
+			add_to_favorites = false
+#vk direct leaderboard
+	if vk_direct_only:
+		if anim_name == \"vk_direct_leaderboard\":
+			Bridge.leaderboard.show_native_popup(Bridge.ShowNativePopupVkOptions.new(vk_direct_result,true))
+			vk_direct_leaderboard = false
+#yandex social
+	if yandex_only:
+		if anim_name == \"rate\":
+			Bridge.social.rate()
+			rate = false
+		if anim_name == \"open_catalog\":
+			JavaScriptBridge.eval(\"window.open('https://yandex.\"+str(Bridge.platform.tld)+str(catalog_link)+\"')\")
+			open_catalog = false
+#yandex_leaderboard
+		if anim_name == \"yandex_leaderboard\":
+			_yandex_leaderboard_set_score_alt()
+			#var set_score_options = Bridge.leaderboard.set_score(Bridge.SetScoreYandexOptions.new(yandex_result,yandex_leaderboard_name))
+			print(\"leaderboard \" + str(yandex_leaderboard_name))
+			#Bridge.leaderboard.set_score(set_score_options, Callable(self,\"_yandex_leaderboard_set_score_completed\"))
+			yandex_leaderboard = false
+#storage
+	if anim_name == \"load_data\":
+		data_load()
+		load_data = false
+	if anim_name == \"save_data\":
+		data_save()
+		save_data = false
+	if anim_name == \"delete_data\":
+		data_delete()
+		delete_data = false
+#leaderboard status
+#func _yandex_leaderboard_set_score_completed(success):
+	#print(success)
+#ad state and audio mute in advertisement
+func _banner_state(state:String):
+	print(\"banner \",state)
+func _interstitial_state(state:String):
+	if state == \"opened\":
+		AudioServer.set_bus_mute(0, true)
+		emit_signal(\"ad_open\")
+		print(\"interstitial opened\")
+	if state == \"closed\":
+		emit_signal(\"ad_close\")
+		AudioServer.set_bus_mute(0, false)
+		print(\"interstitial closed\")
+	if state == \"failed\":
+		emit_signal(\"ad_close\")
+		AudioServer.set_bus_mute(0, false)
+		print(\"interstitial failed and closed\")
+func _rewarded_state(state:String):
+	if state == \"opened\":
+		emit_signal(\"ad_open\")
+		AudioServer.set_bus_mute(0, true)
+		print(\"rewarded opened\")
+	if state == \"rewarded\":
+		emit_signal(\"get_reward\")
+		print(\"get reward\")
+	if state == \"closed\":
+		emit_signal(\"ad_close\")
+		AudioServer.set_bus_mute(0, false)
+		print(\"rewarded closed\")
+	if state == \"failed\":
+		emit_signal(\"ad_close\")
+		AudioServer.set_bus_mute(0, false)
+		print(\"rewarded failed and closed\")
+			
+#audio mute in minimizing
+func _visibility_state(state:String):
+	if state == \"visible\":
+		AudioServer.set_bus_volume_db(0,0)
+		emit_signal(\"app_visible\")
+		print(\"game visible\")
+	if state == \"hidden\":
+		AudioServer.set_bus_volume_db(0,-80)
+		emit_signal(\"app_hidden\")
+		print(\"game hidden\")
+#audio mute in mouse focus out
+func _notification(what:int) -> void:
+	match what:
+		Window.NOTIFICATION_WM_MOUSE_ENTER:
+			if OS.get_name() == \"Web\":
+				AudioServer.set_bus_volume_db(0,0)
+			print(\"mouse in\")
+		Window.NOTIFICATION_WM_MOUSE_EXIT:
+			if OS.get_name() == \"Web\":
+				AudioServer.set_bus_volume_db(0,-80)
+			print(\"mouse out\")
+#storage func and status
+func data_load():
+	Bridge.storage.get(data_key,Callable(self,\"_load_data_completed\"))
+func data_save():
+	Bridge.storage.set(data_key, data_value, Callable(self,\"_save_data_completed\"))
+func data_delete():
+	Bridge.storage.delete(data_key)
+	
+func _load_data_completed(success ,data):
+	print(\"data loaded: \" + str(success))
+	if success:
+		print(data)
+		data_value = data
+		emit_signal(\"data_loaded\")
+	else:
+		print(\"empty\")
+func _save_data_completed(success):
+	print(\"data saved: \" + str(success))
+#alt set score for yandex leaderboard from JavaScriptBridge.eval()
+func _yandex_leaderboard_set_score_alt():
+	JavaScriptBridge.eval(\"\"\"let setScoreOptions = {
+		'yandex': {
+			leaderboardName: '\"\"\"+str(yandex_leaderboard_name)+\"\"\"',
+			score: \"\"\"+str(yandex_result)+\"\"\"
+				}
+			}
+		bridge.leaderboard.setScore(setScoreOptions)
+			.then(() => {
+				// очки успешно записаны
+			})
+			.catch(error => {
+				// ошибка, что-то пошло не так
+			})\"\"\")
+"
+
+[sub_resource type="Animation" id="Animation_qwsp2"]
+resource_name = "add_to_favorites"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_xlpwp"]
+resource_name = "create_post"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_hu0l0"]
+resource_name = "delete_data"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_omp8w"]
+resource_name = "interstitial"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_karj0"]
+resource_name = "invite_friends"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_h8523"]
+resource_name = "join_community"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_fmhyn"]
+resource_name = "load_data"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_n636o"]
+resource_name = "open_catalog"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_x34ue"]
+resource_name = "rate"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_ds278"]
+resource_name = "rewarded"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_5dfne"]
+resource_name = "save_data"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_382wy"]
+resource_name = "share_app"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_xy5f2"]
+resource_name = "show_banner"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_vmarb"]
+resource_name = "vk_direct_leaderboard"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_83q6x"]
+resource_name = "yandex_leaderboard"
+length = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_inx72"]
+_data = {
+"add_to_favorites": SubResource("Animation_qwsp2"),
+"create_post": SubResource("Animation_xlpwp"),
+"delete_data": SubResource("Animation_hu0l0"),
+"interstitial": SubResource("Animation_omp8w"),
+"invite_friends": SubResource("Animation_karj0"),
+"join_community": SubResource("Animation_h8523"),
+"load_data": SubResource("Animation_fmhyn"),
+"open_catalog": SubResource("Animation_n636o"),
+"rate": SubResource("Animation_x34ue"),
+"rewarded": SubResource("Animation_ds278"),
+"save_data": SubResource("Animation_5dfne"),
+"share_app": SubResource("Animation_382wy"),
+"show_banner": SubResource("Animation_xy5f2"),
+"vk_direct_leaderboard": SubResource("Animation_vmarb"),
+"yandex_leaderboard": SubResource("Animation_83q6x")
+}
+
+[node name="igbgui" type="Node"]
+script = SubResource("GDScript_by2q4")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_inx72")
+}
+
+[connection signal="animation_finished" from="anim" to="." method="_finished"]

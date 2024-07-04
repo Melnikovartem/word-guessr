@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://8n3gpu1kl4xo"]
 
-[ext_resource type="Script" path="res://Scene/main.gd" id="1_c1sqs"]
+[ext_resource type="Script" path="res://Main/main.gd" id="1_c1sqs"]
 [ext_resource type="PackedScene" uid="uid://dmfq6ywgajjru" path="res://Keyboard/keyboard.tscn" id="2_n6ak2"]
 [ext_resource type="PackedScene" uid="uid://deix83al7wy2d" path="res://WordPanel/word_panel.tscn" id="2_t01va"]
 [ext_resource type="Script" path="res://WordPanel/word_panel.gd" id="3_ofuck"]
