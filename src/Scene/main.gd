@@ -7,61 +7,54 @@ var word_attempt := ""
 var current_attempt := 1
 var current_letter := 1
 
-@onready var word_rows: Array[HBoxContainer] = [
-	%WordRow1 as HBoxContainer,
-	%WordRow2 as HBoxContainer,
-	%WordRow3 as HBoxContainer,
-	%WordRow4 as HBoxContainer,
-	%WordRow5 as HBoxContainer,
-	%WordRow6 as HBoxContainer,
-]
-@onready var message := %Message as Label
+@onready var message := %WordPanel/Message as Label
 @onready var keyboard := %Keyboard as Keyboard
+@onready var word_panel := %WordPanel as WordPanel
 
 
 func _ready():
 	randomize()
 	word_to_guess = word_list.get_new_word()
 
-
 func _input(event: InputEvent):
 	var key_event := event as InputEventKey
 	if key_event and key_event.pressed:
 		if key_event.unicode != 0:
 			var letter := char(key_event.unicode).to_upper()
-			if current_letter <= 5:
+			if current_letter <= globals.NUMBER_OF_LETTERS:
 				word_attempt += letter
-				update_letter_panel(letter, current_attempt, current_letter)
+				word_panel.update_letter_panel(letter, current_attempt, current_letter)
 				current_letter += 1
 		elif key_event.keycode == KEY_BACKSPACE:
 			if current_letter > 1:
 				current_letter -= 1
 			word_attempt = word_attempt.left(current_letter - 1)
-			update_letter_panel("", current_attempt, current_letter)
+			word_panel.update_letter_panel("", current_attempt, current_letter)
 		elif key_event.keycode == KEY_ENTER:
-			if word_attempt.length() < 5:
-				message.text = "Type 5 letters"
+			if word_attempt.length() < globals.NUMBER_OF_LETTERS:
+				message.text = "Type %d letters" % globals.NUMBER_OF_LETTERS
 				return
 			word_attempt = word_attempt.to_lower()
 			var attempt_result := check_word(word_attempt, word_to_guess)
 			if attempt_result[0] == globals.LetterState.NOT_CHECKED:
 				message.text = "Not in dictionary"
+				print(word_to_guess)
 				return
-			for i in range(5):
-				update_color_panel(attempt_result[i], current_attempt, i + 1)
+			for i in range(globals.NUMBER_OF_LETTERS):
+				word_panel.update_color_panel(attempt_result[i], current_attempt, i + 1)
 				keyboard.change_letter_key_color(word_attempt[i], attempt_result[i])
 			if word_attempt == word_to_guess:
 				message.text = "You Win!"
 				set_process_input(false)
 				return
 			current_attempt += 1
-			if current_attempt > 6:
+			if current_attempt > globals.NUMBER_OF_ROWS + 1:
 				message.text = "The word was: " + word_to_guess
 				set_process_input(false)
 				return
 			current_letter = 1
 			word_attempt = ""
-			message.text = "Godot Wordle"
+			message.text = ""
 
 
 func check_word(word: String, correct_word: String) -> Array[globals.LetterState]:
@@ -80,12 +73,12 @@ func check_word(word: String, correct_word: String) -> Array[globals.LetterState
 	for letter in correct_word:
 		correct_letter_count[letter] = correct_letter_count.get(letter, 0) + 1
 
-	for i in range(5):
+	for i in range(globals.NUMBER_OF_LETTERS):
 		if word[i] == correct_word[i]:
 			result[i] = globals.LetterState.CORRECT
 			correct_letter_count[word[i]] -= 1
 
-	for i in range(5):
+	for i in range(globals.NUMBER_OF_LETTERS):
 		if result[i] == globals.LetterState.CORRECT:
 			continue
 		elif word[i] in correct_word and correct_letter_count.get(word[i], 0) > 0:
@@ -97,19 +90,3 @@ func check_word(word: String, correct_word: String) -> Array[globals.LetterState
 	return result
 
 
-func update_letter_panel(letter: String, attempt_number: int, letter_number: int) -> void:
-	var label := word_rows[attempt_number - 1].get_node("Letter" + str(letter_number) + "/Letter") as Label
-	assert(label)
-	label.text = letter
-
-
-func update_color_panel(check_letter: int, attempt_number: int, letter_number: int) -> void:
-	var panel := word_rows[attempt_number - 1].get_node("Letter" + str(letter_number)) as ColorRect
-	assert(panel)
-	match check_letter:
-		globals.LetterState.NOT_IN_WORD:
-			panel.color = Color.INDIAN_RED
-		globals.LetterState.WRONG_PLACE:
-			panel.color = Color.YELLOW
-		globals.LetterState.CORRECT:
-			panel.color = Color.YELLOW_GREEN
