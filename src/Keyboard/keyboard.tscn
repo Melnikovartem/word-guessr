@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmfq6ywgajjru"]
+[gd_scene load_steps=5 format=3 uid="uid://dmfq6ywgajjru"]
 
 [ext_resource type="Script" path="res://Keyboard/keyboard.gd" id="1_4iejr"]
-[ext_resource type="Theme" path="res://pixel_butt.tres" id="2_x0a7e"]
+[ext_resource type="Theme" uid="uid://bp6f6g8spf03o" path="res://pixel_butt.tres" id="2_x0a7e"]
 [ext_resource type="FontFile" uid="uid://dja437l1n87pc" path="res://Assets/Fonts/CustomFontTtf12H10.ttf" id="3_ya3u7"]
+[ext_resource type="Texture2D" uid="uid://cgxfrt0abg2vw" path="res://BlackTile.png" id="4_j640q"]
 
 [node name="Keyboard" type="VBoxContainer"]
 anchors_preset = 12
@@ -192,6 +193,14 @@ size_flags_horizontal = 3
 theme = ExtResource("2_x0a7e")
 theme_override_font_sizes/font_size = 50
 text = "Enter"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("4_j640q")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
 [connection signal="pressed" from="KeyRow2/BackSpace" to="." method="_on_BackSpace_pressed"]
 [connection signal="pressed" from="KeyRow3/Enter" to="." method="_on_Enter_pressed"]
