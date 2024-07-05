@@ -10,7 +10,13 @@ func _ready() -> void:
 		key.pressed.connect(_send_input_event_with_unicode.bind(letter_unicode))
 
 
-func change_letter_key_color(letter: String, check_letter: int) -> void:
+func flush_keyboard():
+	for node in get_tree().get_nodes_in_group("letter_keys"):
+		var key := node as Button
+		assert(key)
+		key.self_modulate = Color.WHITE
+			
+func change_letter_key_color(letter: String, check_letter: globals.LetterState) -> void:
 	for node in get_tree().get_nodes_in_group("letter_keys"):
 		var key := node as Button
 		assert(key)
@@ -27,7 +33,7 @@ func change_letter_key_color(letter: String, check_letter: int) -> void:
 				globals.LetterState.CORRECT:
 					key.self_modulate = Color.YELLOW_GREEN
 			return
-
+			
 
 func _char_to_ascii_int(letter: String) -> int:
 	var buffer := StreamPeerBuffer.new()

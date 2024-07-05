@@ -2,7 +2,7 @@
 
 [ext_resource type="LabelSettings" uid="uid://cv08cvrbiue58" path="res://Assets/Fonts/LabelSettings.tres" id="1_aaaow"]
 
-[node name="Letter1" type="NinePatchRect"]
+[node name="Letter1" type="ColorRect"]
 anchors_preset = -1
 anchor_left = 0.052
 anchor_top = 0.035

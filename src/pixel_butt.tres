@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bp6f6g8spf03o"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://547ss0jtj6ek"]
 
 [ext_resource type="FontFile" uid="uid://dja437l1n87pc" path="res://Assets/Fonts/CustomFontTtf12H10.ttf" id="1_b5uu8"]
 
 [resource]
+Button/font_sizes/font_size = 55
 Button/fonts/font = ExtResource("1_b5uu8")
 Button/styles/normal = null

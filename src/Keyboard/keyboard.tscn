@@ -15,6 +15,8 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -251.0
+grow_horizontal = 2
+grow_vertical = 0
 script = ExtResource("1_4iejr")
 
 [node name="KeyRow1" type="HBoxContainer" parent="."]
@@ -25,61 +27,51 @@ size_flags_vertical = 3
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 theme_override_fonts/font = ExtResource("3_ya3u7")
-theme_override_font_sizes/font_size = 50
 text = "q"
 
 [node name="W" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "w"
 
 [node name="E" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "e"
 
 [node name="R" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "r"
 
 [node name="T" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "t"
 
 [node name="Y" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "y"
 
 [node name="U" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "u"
 
 [node name="I" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "i"
 
 [node name="O" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "o"
 
 [node name="P" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "p"
 
 [node name="KeyRow2" type="HBoxContainer" parent="."]
@@ -90,62 +82,52 @@ size_flags_vertical = 3
 [node name="A" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "a"
 
 [node name="S" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "s"
 
 [node name="D" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "d"
 
 [node name="F" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "f"
 
 [node name="G" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "g"
 
 [node name="H" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "h"
 
 [node name="J" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "j"
 
 [node name="K" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "k"
 
 [node name="L" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "l"
 
 [node name="BackSpace" type="Button" parent="KeyRow2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "<--"
 
 [node name="KeyRow3" type="HBoxContainer" parent="."]
@@ -157,45 +139,37 @@ theme = ExtResource("2_x0a7e")
 [node name="Z" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "z"
 
 [node name="X" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "x"
 
 [node name="C" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 text = "c"
 
 [node name="V" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 text = "v"
 
 [node name="B" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 text = "b"
 
 [node name="N" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 text = "n"
 
 [node name="M" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 text = "m"
 
 [node name="Enter" type="Button" parent="KeyRow3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_x0a7e")
-theme_override_font_sizes/font_size = 50
 text = "Enter"
 
 [node name="Not in Word" type="NinePatchRect" parent="."]
