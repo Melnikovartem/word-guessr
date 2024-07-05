@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmfq6ywgajjru"]
+[gd_scene load_steps=9 format=3 uid="uid://dmfq6ywgajjru"]
 
 [ext_resource type="Script" path="res://Keyboard/keyboard.gd" id="1_4iejr"]
 [ext_resource type="Theme" uid="uid://bp6f6g8spf03o" path="res://pixel_butt.tres" id="2_x0a7e"]
 [ext_resource type="FontFile" uid="uid://dja437l1n87pc" path="res://Assets/Fonts/CustomFontTtf12H10.ttf" id="3_ya3u7"]
-[ext_resource type="Texture2D" uid="uid://cgxfrt0abg2vw" path="res://BlackTile.png" id="4_j640q"]
+[ext_resource type="Texture2D" uid="uid://dpk7ytls7c0k6" path="res://Assets/9 patches/NotInWord.png" id="4_oyucg"]
+[ext_resource type="Texture2D" uid="uid://u6kjm3diplx5" path="res://Assets/9 patches/Correct.png" id="5_4kjpx"]
+[ext_resource type="Texture2D" uid="uid://bnu0ssv0a48e8" path="res://Assets/9 patches/WrongPlace.png" id="6_jwc7g"]
+[ext_resource type="Texture2D" uid="uid://janfrj22si1e" path="res://Assets/9 patches/Empty.png" id="7_j51s1"]
+[ext_resource type="Texture2D" uid="uid://bpp04ell6xcac" path="res://Assets/9 patches/KeyboardTile.png" id="8_xdfqj"]
 
 [node name="Keyboard" type="VBoxContainer"]
 anchors_preset = 12
@@ -194,9 +198,40 @@ theme = ExtResource("2_x0a7e")
 theme_override_font_sizes/font_size = 50
 text = "Enter"
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="Not in Word" type="NinePatchRect" parent="."]
 layout_mode = 2
-texture = ExtResource("4_j640q")
+texture = ExtResource("4_oyucg")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Correct" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("5_4kjpx")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+
+[node name="WrongPlace" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("6_jwc7g")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Empty" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("7_j51s1")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="KeyboardTile" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("8_xdfqj")
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
