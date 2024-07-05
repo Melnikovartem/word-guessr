@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://janfrj22si1e"
-path="res://.godot/imported/Empty.png-05c1459d550933042a92936eae3426cb.ctex"
+uid="uid://bpp04ell6xcac"
+path="res://.godot/imported/KeyboardTile.png-51b80630b7b27392ac9d8eee98e85b59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/9 patches/Empty.png"
-dest_files=["res://.godot/imported/Empty.png-05c1459d550933042a92936eae3426cb.ctex"]
+source_file="res://Assets/ButtonTextures/KeyboardTile.png"
+dest_files=["res://.godot/imported/KeyboardTile.png-51b80630b7b27392ac9d8eee98e85b59.ctex"]
 
 [params]
 

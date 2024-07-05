@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnu0ssv0a48e8"
-path="res://.godot/imported/WrongPlace.png-446361e6e5ef45ba9f7aaf61fcae1675.ctex"
+uid="uid://janfrj22si1e"
+path="res://.godot/imported/Empty.png-e32bcd66107d3c67d8f2e8119027d5fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/9 patches/WrongPlace.png"
-dest_files=["res://.godot/imported/WrongPlace.png-446361e6e5ef45ba9f7aaf61fcae1675.ctex"]
+source_file="res://Assets/ButtonTextures/Empty.png"
+dest_files=["res://.godot/imported/Empty.png-e32bcd66107d3c67d8f2e8119027d5fa.ctex"]
 
 [params]
 

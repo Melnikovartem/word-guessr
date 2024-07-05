@@ -21,6 +21,8 @@ func reset_game():
 	keyboard.flush_keyboard()
 	word_panel.flush_panel()
 	
+	message.text = "WORDS BITE"
+	
 	keyboard.visible = true
 	new_game_ui.visible = false
 	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u6kjm3diplx5"
-path="res://.godot/imported/Correct.png-fa5d3d974ad3500e22a14d728b002ab4.ctex"
+uid="uid://bnu0ssv0a48e8"
+path="res://.godot/imported/WrongPlace.png-3c195ae8a8f44f956318680c389019bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/9 patches/Correct.png"
-dest_files=["res://.godot/imported/Correct.png-fa5d3d974ad3500e22a14d728b002ab4.ctex"]
+source_file="res://Assets/ButtonTextures/WrongPlace.png"
+dest_files=["res://.godot/imported/WrongPlace.png-3c195ae8a8f44f956318680c389019bd.ctex"]
 
 [params]
 

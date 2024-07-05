@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpk7ytls7c0k6"
-path="res://.godot/imported/NotInWord.png-be9c674ad59b9d673710a48b1fe93e55.ctex"
+path="res://.godot/imported/NotInWord.png-9f08e8e62e268906e96a87ad1c6ef3b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/9 patches/NotInWord.png"
-dest_files=["res://.godot/imported/NotInWord.png-be9c674ad59b9d673710a48b1fe93e55.ctex"]
+source_file="res://Assets/ButtonTextures/NotInWord.png"
+dest_files=["res://.godot/imported/NotInWord.png-9f08e8e62e268906e96a87ad1c6ef3b5.ctex"]
 
 [params]
 

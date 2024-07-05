@@ -22,15 +22,27 @@ func update_letter_panel(letter: String, attempt_number: int, letter_number: int
 	assert(label)
 	label.text = letter
 
+
+var new_texture = preload("res://Assets/ButtonTextures/KeyboardTile.png")
+
 func update_color_panel(check_letter: globals.LetterState, attempt_number: int, letter_number: int) -> void:
-	var panel := word_rows[attempt_number].get_node("Letter" + str(letter_number)) as ColorRect
+	var panel := word_rows[attempt_number].get_node("Letter" + str(letter_number)) as NinePatchRect
 	assert(panel)
 	match check_letter:
+		
 		globals.LetterState.NOT_IN_WORD:
-			panel.color = Color.INDIAN_RED
+			panel.texture = globals.LetterColor.NOT_IN_WORD
+			panel.draw_center = true
+			panel.get_child(0).self_modulate = Color.INDIAN_RED
 		globals.LetterState.WRONG_PLACE:
-			panel.color = Color.YELLOW
+			panel.texture = globals.LetterColor.WRONG_PLACE
+			panel.get_child(0).self_modulate = Color.YELLOW
+			panel.draw_center = true
 		globals.LetterState.CORRECT:
-			panel.color = Color.YELLOW_GREEN
+			panel.texture = globals.LetterColor.CORRECT
+			panel.get_child(0).self_modulate = Color.YELLOW_GREEN
+			panel.draw_center = true
 		globals.LetterState.NOT_CHECKED:
-			panel.color = Color.WHITE
+			panel.texture = globals.LetterColor.NOT_CHECKED
+			panel.get_child(0).self_modulate = Color.WHITE
+			panel.draw_center = false
