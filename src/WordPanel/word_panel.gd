@@ -1,13 +1,15 @@
 class_name WordPanel
 extends CanvasLayer
 
-@onready var word_rows: Array[HBoxContainer] = [
-	%WordRow1 as HBoxContainer,
-	%WordRow2 as HBoxContainer,
-	%WordRow3 as HBoxContainer,
-	%WordRow4 as HBoxContainer,
-	%WordRow5 as HBoxContainer,
-]
+var word_row_scene = preload("res://WordPanel/word_row.tscn")
+
+var word_rows: Array[HBoxContainer] = []
+
+func _ready():
+	for i in range(globals.NUMBER_OF_ATTEMPTS):
+		var word_row = word_row_scene.instantiate()
+		word_rows.append(word_row)
+		%WordRows.add_child(word_row)
 
 func update_letter_panel(letter: String, attempt_number: int, letter_number: int) -> void:
 	var label := word_rows[attempt_number].get_node("Letter" + str(letter_number) + "/Letter") as Label
