@@ -8,5 +8,5 @@ enum LetterState {
 	CORRECT
 }
 
-const NUMBER_OF_ATTEMPTS = 6
-const NUMBER_OF_LETTERS = 5
+const NUMBER_OF_ATTEMPTS = 2
+const NUMBER_OF_LETTERS = 7

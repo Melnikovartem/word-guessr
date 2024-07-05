@@ -1,22 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://mnvt8ai08x0u"]
+[gd_scene load_steps=2 format=3 uid="uid://dlxfe08n2a1ti"]
 
-[ext_resource type="PackedScene" uid="uid://denflqjl35rrt" path="res://WordPanel/one_letter.tscn" id="1_x6a18"]
+[ext_resource type="Script" path="res://WordPanel/word_row.gd" id="1_43x4a"]
 
-[node name="WordRow1" type="HBoxContainer"]
+[node name="WordRow" type="HBoxContainer"]
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Letter0" parent="." instance=ExtResource("1_x6a18")]
-layout_mode = 2
-
-[node name="Letter1" parent="." instance=ExtResource("1_x6a18")]
-layout_mode = 2
-
-[node name="Letter2" parent="." instance=ExtResource("1_x6a18")]
-layout_mode = 2
-
-[node name="Letter3" parent="." instance=ExtResource("1_x6a18")]
-layout_mode = 2
-
-[node name="Letter4" parent="." instance=ExtResource("1_x6a18")]
-layout_mode = 2
+script = ExtResource("1_43x4a")

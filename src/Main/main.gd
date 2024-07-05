@@ -20,57 +20,75 @@ func _reset_game():
 	_save_attempts()
 	_save_current_letters()
 	
+func _preload_attempts(data: String) -> Error:
+	var json = JSON.new()
+	var error = json.parse(data)
+	if error != OK:
+		return FAILED
+	if json.data.size() > globals.NUMBER_OF_ATTEMPTS:
+		return FAILED
+	for word in json.data:
+		if typeof(word) != TYPE_STRING:
+			return FAILED
+		if word.length() != globals.NUMBER_OF_LETTERS:
+			return FAILED
+	attempts.assign(json.data)
+	return OK
+
+func _preload_current_letters(data: String) -> Error:
+	var json = JSON.new()
+	var error = json.parse(data)
+	if error != OK:
+		return FAILED
+	if json.data.size() > globals.NUMBER_OF_LETTERS:
+		return FAILED
+	for letter in json.data:
+		if typeof(letter) != TYPE_STRING:
+			return FAILED
+	current_letters.assign(json.data)
+	return OK
+
+func _set_board():
+	for i in range(attempts.size()):
+		for j in range(attempts[i].length()):
+			word_panel.update_letter_panel(attempts[i][j].to_upper(), i, j)
+		update_board_word(attempts[i], i)
+	for i in range(current_letters.size()):
+		word_panel.update_letter_panel(current_letters[i], attempts.size(), i)
+
 func _on_storage_get_completed(success, data):
 	if not success:
 		return
-		
 	if data[3] != null:
 		score = int(data[3])
-	
 	if data[0] == null or data[0].is_empty():
 		return
-	word_to_guess = data[0]
-		
-	
-	if data[1] != null:
-		var json = JSON.new()
-		var error = json.parse(data[1])
-		if error == OK and json.data.size() < globals.NUMBER_OF_ATTEMPTS:
-			attempts.assign(json.data)
-			for i in range(attempts.size()):
-				for j in range(attempts[i].length()):
-					word_panel.update_letter_panel(attempts[i][j].to_upper(), i, j)
-				update_board_word(attempts[i], i)
-		
-	if data[2] != null:
-		var json = JSON.new()
-		var error = json.parse(data[2])
-		if error == OK and json.data.size() < globals.NUMBER_OF_LETTERS:
-			current_letters.assign(json.data)
-			for i in range(current_letters.size()):
-				word_panel.update_letter_panel(current_letters[i], attempts.size(), i)
-		
-func _reset_state():
-	Bridge.storage.delete(["word", "attempts", "current_letters"])
-	
+	var failed_load_attempts = data[1] == null or _preload_attempts(data[1]) != OK
+	var failed_load_current_letters = data[2] == null or _preload_current_letters(data[2]) != OK
+	if not failed_load_attempts and not failed_load_current_letters:
+		word_to_guess = data[0]
+		_set_board()
+	else:
+		_reset_game()
+
 func _load_state():
 	Bridge.storage.get(["word", "attempts", "current_letters", "score"], _on_storage_get_completed)
 	
-# could be one function _save_state but not efficient (?)l
+func _reset_state():
+	Bridge.storage.delete(["word", "attempts", "current_letters"])
+	
 func _save_word():
 	print(word_to_guess)
 	Bridge.storage.set("word", word_to_guess)
 
 func _save_current_letters():
 	Bridge.storage.set("current_letters", current_letters)
-	
+
 func _save_attempts():
 	Bridge.storage.set("attempts", attempts)
-	
+
 func _save_score():
 	Bridge.storage.set("score", score)
-	
-	
 	
 func _ready():
 	Bridge.advertisement.set_minimum_delay_between_interstitial(30)
