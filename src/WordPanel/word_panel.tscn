@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://deix83al7wy2d"]
+[gd_scene load_steps=4 format=3 uid="uid://deix83al7wy2d"]
 
+[ext_resource type="PackedScene" uid="uid://dlxfe08n2a1ti" path="res://WordPanel/word_row.tscn" id="1_1hubl"]
 [ext_resource type="LabelSettings" uid="uid://cv08cvrbiue58" path="res://Assets/Fonts/LabelSettings.tres" id="1_uo6yc"]
+[ext_resource type="PackedScene" uid="uid://denflqjl35rrt" path="res://WordPanel/one_letter.tscn" id="2_6gelk"]
 
 [node name="Words" type="CanvasLayer"]
 
@@ -15,6 +17,24 @@ offset_right = 125.0
 offset_bottom = 372.0
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="TestRow" parent="WordRows" instance=ExtResource("1_1hubl")]
+layout_mode = 2
+
+[node name="Letter1" parent="WordRows/TestRow" instance=ExtResource("2_6gelk")]
+layout_mode = 2
+
+[node name="Letter2" parent="WordRows/TestRow" instance=ExtResource("2_6gelk")]
+layout_mode = 2
+
+[node name="Letter3" parent="WordRows/TestRow" instance=ExtResource("2_6gelk")]
+layout_mode = 2
+
+[node name="Letter4" parent="WordRows/TestRow" instance=ExtResource("2_6gelk")]
+layout_mode = 2
+
+[node name="Letter5" parent="WordRows/TestRow" instance=ExtResource("2_6gelk")]
+layout_mode = 2
 
 [node name="Message" type="Label" parent="."]
 unique_name_in_owner = true
