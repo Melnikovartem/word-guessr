@@ -11,21 +11,47 @@ var score := 0
 @onready var message := %WordPanel/Message as Label
 @onready var keyboard := %Keyboard as Keyboard
 @onready var word_panel := %WordPanel as WordPanel
+@onready var new_game_ui := %NewGameUI as Control
 
-func _reset_game():
+func reset_game():
 	word_to_guess = word_list.get_new_word()
 	attempts = []
 	current_letters = []
+	
+	keyboard.flush_keyboard()
+	word_panel.flush_panel()
+	
+	keyboard.visible = true
+	new_game_ui.visible = false
+	
 	_save_word()
 	_save_attempts()
 	_save_current_letters()
+		
+func end_game(win: bool = false):
+	if win:
+		score += globals.NUMBER_OF_ATTEMPTS - attempts.size() + 1
+		_save_score()
+	else:
+		Bridge.advertisement.show_rewarded()
+	keyboard.visible = false
+	new_game_ui.visible = true
 	
+	
+func _set_board():
+	for i in range(attempts.size()):
+		for j in range(attempts[i].length()):
+			word_panel.update_letter_panel(attempts[i][j].to_upper(), i, j)
+		update_board_word(attempts[i], i)
+	for i in range(current_letters.size()):
+		word_panel.update_letter_panel(current_letters[i], attempts.size(), i)
+		
 func _preload_attempts(data: String) -> Error:
 	var json = JSON.new()
 	var error = json.parse(data)
 	if error != OK:
 		return FAILED
-	if json.data.size() > globals.NUMBER_OF_ATTEMPTS:
+	if json.data.size() >= globals.NUMBER_OF_ATTEMPTS:
 		return FAILED
 	for word in json.data:
 		if typeof(word) != TYPE_STRING:
@@ -48,14 +74,6 @@ func _preload_current_letters(data: String) -> Error:
 	current_letters.assign(json.data)
 	return OK
 
-func _set_board():
-	for i in range(attempts.size()):
-		for j in range(attempts[i].length()):
-			word_panel.update_letter_panel(attempts[i][j].to_upper(), i, j)
-		update_board_word(attempts[i], i)
-	for i in range(current_letters.size()):
-		word_panel.update_letter_panel(current_letters[i], attempts.size(), i)
-
 func _on_storage_get_completed(success, data):
 	if not success:
 		return
@@ -69,7 +87,7 @@ func _on_storage_get_completed(success, data):
 		word_to_guess = data[0]
 		_set_board()
 	else:
-		_reset_game()
+		reset_game()
 
 func _load_state():
 	Bridge.storage.get(["word", "attempts", "current_letters", "score"], _on_storage_get_completed)
@@ -97,7 +115,7 @@ func _ready():
 	_load_state()
 	
 	if word_to_guess == null or word_to_guess.is_empty():
-		_reset_game()
+		reset_game()
 	
 func get_score(attempts_taken):
 	return globals.NUMBER_OF_ATTEMPTS - attempts_taken
@@ -105,6 +123,11 @@ func get_score(attempts_taken):
 func _input(event: InputEvent):
 	var key_event := event as InputEventKey
 	if not key_event or not key_event.pressed:
+		return
+		
+	
+	if attempts.size() >= globals.NUMBER_OF_ATTEMPTS:
+		reset_game()
 		return
 		
 	if key_event.unicode != 0:
@@ -131,19 +154,17 @@ func _input(event: InputEvent):
 			
 		if success == OK:
 			message.text = "You Win!"
-			score += globals.NUMBER_OF_ATTEMPTS - attempts.size() + 1
-			_save_score()
+			end_game(true)
 			return
 		
 		attempts.push_back(word_attempt)
 		_save_attempts()
-		if attempts.size() > globals.NUMBER_OF_ATTEMPTS:
+		if attempts.size() >= globals.NUMBER_OF_ATTEMPTS:
 			message.text = "The word was: " + word_to_guess
-			Bridge.advertisement.show_rewarded()
+			end_game()
 			return
 		current_letters = []
 		message.text = ""
-		print(current_letters, attempts)
 
 func update_board_word(word_attempt: String, current_attempt: int) -> Error:
 	var attempt_result := check_word(word_attempt, word_to_guess)
@@ -158,7 +179,6 @@ func update_board_word(word_attempt: String, current_attempt: int) -> Error:
 	if word_attempt == word_to_guess:
 		return OK
 	return FAILED
-	
 
 func check_word(word: String, correct_word: String) -> Array[globals.LetterState]:
 	var result: Array[globals.LetterState] = [
@@ -191,5 +211,3 @@ func check_word(word: String, correct_word: String) -> Array[globals.LetterState
 			result[i] = globals.LetterState.NOT_IN_WORD
 
 	return result
-
-

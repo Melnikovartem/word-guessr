@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://8n3gpu1kl4xo"]
+[gd_scene load_steps=6 format=3 uid="uid://8n3gpu1kl4xo"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_c1sqs"]
 [ext_resource type="PackedScene" uid="uid://dmfq6ywgajjru" path="res://Keyboard/keyboard.tscn" id="2_n6ak2"]
 [ext_resource type="PackedScene" uid="uid://deix83al7wy2d" path="res://WordPanel/word_panel.tscn" id="2_t01va"]
 [ext_resource type="Script" path="res://WordPanel/word_panel.gd" id="3_ofuck"]
+[ext_resource type="Theme" uid="uid://547ss0jtj6ek" path="res://pixel_butt.tres" id="5_wwvoo"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_c1sqs")
@@ -12,10 +13,10 @@ script = ExtResource("1_c1sqs")
 position = Vector2(241, 361)
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -58.0
-offset_top = -69.0
-offset_right = 559.0
-offset_bottom = 755.0
+offset_left = -54.0
+offset_top = -80.0
+offset_right = 563.0
+offset_bottom = 744.0
 color = Color(0.337255, 0.388235, 0.619608, 1)
 
 [node name="WordPanel" parent="." instance=ExtResource("2_t01va")]
@@ -24,7 +25,37 @@ script = ExtResource("3_ofuck")
 
 [node name="Keyboard" parent="." instance=ExtResource("2_n6ak2")]
 unique_name_in_owner = true
+visible = false
 offset_left = 10.0
 offset_top = -210.0
 offset_right = -10.0
 offset_bottom = -10.0
+
+[node name="NewGameUI" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 150.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewGameButton" type="Button" parent="NewGameUI"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -50.0
+offset_right = -20.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_wwvoo")
+text = "NEW GAME"
+
+[connection signal="pressed" from="NewGameUI/NewGameButton" to="." method="reset_game"]

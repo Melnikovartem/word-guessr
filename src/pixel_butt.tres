@@ -3,6 +3,6 @@
 [ext_resource type="FontFile" uid="uid://dja437l1n87pc" path="res://Assets/Fonts/CustomFontTtf12H10.ttf" id="1_b5uu8"]
 
 [resource]
-Button/font_sizes/font_size = 60
+Button/font_sizes/font_size = 55
 Button/fonts/font = ExtResource("1_b5uu8")
 Button/styles/normal = null
