@@ -38,6 +38,7 @@ func end_game(win: bool = false):
 		Bridge.advertisement.show_rewarded()
 	keyboard.visible = false
 	new_game_ui.visible = true
+	new_game_ui.get_child(0).text = "Your overall score\n%d" % score
 	
 	
 func _set_board():
@@ -124,11 +125,15 @@ func get_score(attempts_taken):
 
 func _input(event: InputEvent):
 	var key_event := event as InputEventKey
+	
 	if not key_event or not key_event.pressed:
 		return
 		
 	
 	if attempts.size() >= globals.NUMBER_OF_ATTEMPTS:
+		if key_event.unicode != 0:
+			return
+		
 		reset_game()
 		return
 		
@@ -166,7 +171,7 @@ func _input(event: InputEvent):
 			end_game()
 			return
 		current_letters = []
-		message.text = ""
+		message.text = "WORDS BITE"
 
 func update_board_word(word_attempt: String, current_attempt: int) -> Error:
 	var attempt_result := check_word(word_attempt, word_to_guess)
