@@ -128,12 +128,11 @@ func _input(event: InputEvent):
 	
 	if not key_event or not key_event.pressed:
 		return
-		
 	
-	if attempts.size() >= globals.NUMBER_OF_ATTEMPTS:
+	if keyboard.visible == false:
 		if key_event.unicode != 0:
 			return
-		
+
 		reset_game()
 		return
 		
