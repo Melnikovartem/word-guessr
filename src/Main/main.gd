@@ -114,7 +114,7 @@ func _save_score():
 func _ready():
 	Bridge.advertisement.set_minimum_delay_between_interstitial(30)
 	randomize()
-	# _reset_state()
+	_reset_state()
 	_load_state()
 	
 	if word_to_guess == null or word_to_guess.is_empty():
@@ -133,7 +133,7 @@ func _input(event: InputEvent):
 		if key_event.unicode != 0:
 			return
 
-		reset_game()
+		# reset_game()
 		return
 		
 	if key_event.unicode != 0:
@@ -166,7 +166,7 @@ func _input(event: InputEvent):
 		attempts.push_back(word_attempt)
 		_save_attempts()
 		if attempts.size() >= globals.NUMBER_OF_ATTEMPTS:
-			message.text = "The word was: " + word_to_guess
+			message.text = "The word was " + word_to_guess
 			end_game()
 			return
 		current_letters = []
