@@ -5,4 +5,5 @@
 [node name="WordRow" type="HBoxContainer"]
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 10
 script = ExtResource("1_43x4a")

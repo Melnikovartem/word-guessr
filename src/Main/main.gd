@@ -21,6 +21,8 @@ func reset_game():
 	keyboard.flush_keyboard()
 	word_panel.flush_panel()
 	
+	message.text = "WORDS BITE"
+	
 	keyboard.visible = true
 	new_game_ui.visible = false
 	
@@ -36,6 +38,7 @@ func end_game(win: bool = false):
 		Bridge.advertisement.show_rewarded()
 	keyboard.visible = false
 	new_game_ui.visible = true
+	new_game_ui.get_child(0).text = "Your overall score\n%d" % score
 	
 	
 func _set_board():
@@ -111,7 +114,7 @@ func _save_score():
 func _ready():
 	Bridge.advertisement.set_minimum_delay_between_interstitial(30)
 	randomize()
-	# _reset_state()
+	_reset_state()
 	_load_state()
 	
 	if word_to_guess == null or word_to_guess.is_empty():
@@ -122,12 +125,15 @@ func get_score(attempts_taken):
 
 func _input(event: InputEvent):
 	var key_event := event as InputEventKey
+	
 	if not key_event or not key_event.pressed:
 		return
-		
 	
-	if attempts.size() >= globals.NUMBER_OF_ATTEMPTS:
-		reset_game()
+	if keyboard.visible == false:
+		if key_event.unicode != 0:
+			return
+
+		# reset_game()
 		return
 		
 	if key_event.unicode != 0:
@@ -160,11 +166,11 @@ func _input(event: InputEvent):
 		attempts.push_back(word_attempt)
 		_save_attempts()
 		if attempts.size() >= globals.NUMBER_OF_ATTEMPTS:
-			message.text = "The word was: " + word_to_guess
+			message.text = "The word was " + word_to_guess
 			end_game()
 			return
 		current_letters = []
-		message.text = ""
+		message.text = "WORDS BITE"
 
 func update_board_word(word_attempt: String, current_attempt: int) -> Error:
 	var attempt_result := check_word(word_attempt, word_to_guess)

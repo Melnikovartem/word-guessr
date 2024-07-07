@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://deix83al7wy2d"]
+[gd_scene load_steps=7 format=3 uid="uid://deix83al7wy2d"]
 
 [ext_resource type="PackedScene" uid="uid://dlxfe08n2a1ti" path="res://WordPanel/word_row.tscn" id="1_1hubl"]
 [ext_resource type="LabelSettings" uid="uid://cv08cvrbiue58" path="res://Assets/Fonts/LabelSettings.tres" id="1_uo6yc"]
 [ext_resource type="PackedScene" uid="uid://denflqjl35rrt" path="res://WordPanel/one_letter.tscn" id="2_6gelk"]
+[ext_resource type="Texture2D" uid="uid://bpp04ell6xcac" path="res://Assets/ButtonTextures/KeyboardTile.png" id="4_mfkhs"]
+[ext_resource type="Texture2D" uid="uid://bnu0ssv0a48e8" path="res://Assets/ButtonTextures/WrongPlace.png" id="5_3dq6w"]
+[ext_resource type="Texture2D" uid="uid://dpk7ytls7c0k6" path="res://Assets/ButtonTextures/NotInWord.png" id="6_fjx62"]
 
 [node name="Words" type="CanvasLayer"]
 
@@ -11,30 +14,40 @@ unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -125.0
+offset_left = -145.0
 offset_top = 22.0
-offset_right = 125.0
+offset_right = 145.0
 offset_bottom = 372.0
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="TestRow" parent="WordRows" instance=ExtResource("1_1hubl")]
+visible = false
 layout_mode = 2
+script = null
 
 [node name="Letter1" parent="WordRows/TestRow" instance=ExtResource("2_6gelk")]
 layout_mode = 2
+draw_center = true
 
 [node name="Letter2" parent="WordRows/TestRow" instance=ExtResource("2_6gelk")]
 layout_mode = 2
+draw_center = true
 
 [node name="Letter3" parent="WordRows/TestRow" instance=ExtResource("2_6gelk")]
 layout_mode = 2
+texture = ExtResource("4_mfkhs")
+draw_center = true
 
 [node name="Letter4" parent="WordRows/TestRow" instance=ExtResource("2_6gelk")]
 layout_mode = 2
+texture = ExtResource("5_3dq6w")
+draw_center = true
 
 [node name="Letter5" parent="WordRows/TestRow" instance=ExtResource("2_6gelk")]
 layout_mode = 2
+texture = ExtResource("6_fjx62")
+draw_center = true
 
 [node name="Message" type="Label" parent="."]
 unique_name_in_owner = true
@@ -50,5 +63,4 @@ offset_bottom = 25.0
 text = "WORDS BITE"
 label_settings = ExtResource("1_uo6yc")
 horizontal_alignment = 1
-vertical_alignment = 2
 metadata/_edit_use_anchors_ = true

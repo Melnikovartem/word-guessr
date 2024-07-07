@@ -1,20 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmfq6ywgajjru"]
+[gd_scene load_steps=5 format=3 uid="uid://dmfq6ywgajjru"]
 
 [ext_resource type="Script" path="res://Keyboard/keyboard.gd" id="1_4iejr"]
-[ext_resource type="Theme" uid="uid://bp6f6g8spf03o" path="res://pixel_butt.tres" id="2_x0a7e"]
+[ext_resource type="Theme" uid="uid://547ss0jtj6ek" path="res://pixel_butt.tres" id="2_x0a7e"]
 [ext_resource type="FontFile" uid="uid://dja437l1n87pc" path="res://Assets/Fonts/CustomFontTtf12H10.ttf" id="3_ya3u7"]
-[ext_resource type="Texture2D" uid="uid://dpk7ytls7c0k6" path="res://Assets/9 patches/NotInWord.png" id="4_oyucg"]
-[ext_resource type="Texture2D" uid="uid://u6kjm3diplx5" path="res://Assets/9 patches/Correct.png" id="5_4kjpx"]
-[ext_resource type="Texture2D" uid="uid://bnu0ssv0a48e8" path="res://Assets/9 patches/WrongPlace.png" id="6_jwc7g"]
-[ext_resource type="Texture2D" uid="uid://janfrj22si1e" path="res://Assets/9 patches/Empty.png" id="7_j51s1"]
-[ext_resource type="Texture2D" uid="uid://bpp04ell6xcac" path="res://Assets/9 patches/KeyboardTile.png" id="8_xdfqj"]
+[ext_resource type="Texture2D" uid="uid://bpp04ell6xcac" path="res://Assets/ButtonTextures/KeyboardTile.png" id="4_wa2e0"]
 
 [node name="Keyboard" type="VBoxContainer"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -251.0
+offset_top = -200.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_4iejr")
@@ -29,50 +25,200 @@ theme = ExtResource("2_x0a7e")
 theme_override_fonts/font = ExtResource("3_ya3u7")
 text = "q"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow1/Q"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="W" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "w"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow1/W"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="E" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "e"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow1/E"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="R" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "r"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow1/R"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="T" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "t"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow1/T"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="Y" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "y"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow1/Y"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="U" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "u"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow1/U"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="I" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "i"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow1/I"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="O" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "o"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow1/O"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="P" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "p"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow1/P"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="KeyRow2" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -84,51 +230,201 @@ layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "a"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow2/A"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="S" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "s"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow2/S"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="D" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "d"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow2/D"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="F" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "f"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow2/F"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="G" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "g"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow2/G"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="H" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "h"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow2/H"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="J" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "j"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow2/J"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="K" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "k"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow2/K"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="L" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "l"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow2/L"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="BackSpace" type="Button" parent="KeyRow2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_x0a7e")
 text = "<--"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow2/BackSpace"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="KeyRow3" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -141,30 +437,135 @@ layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "z"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow3/Z"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="X" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
 theme = ExtResource("2_x0a7e")
 text = "x"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow3/X"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="C" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
 text = "c"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow3/C"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="V" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
 text = "v"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow3/V"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="B" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
 text = "b"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow3/B"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="N" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
 text = "n"
 
+[node name="Border" type="NinePatchRect" parent="KeyRow3/N"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="M" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
 text = "m"
+
+[node name="Border" type="NinePatchRect" parent="KeyRow3/M"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="Enter" type="Button" parent="KeyRow3"]
 layout_mode = 2
@@ -172,44 +573,20 @@ size_flags_horizontal = 3
 theme = ExtResource("2_x0a7e")
 text = "Enter"
 
-[node name="Not in Word" type="NinePatchRect" parent="."]
-layout_mode = 2
-texture = ExtResource("4_oyucg")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="Correct" type="NinePatchRect" parent="."]
-layout_mode = 2
-texture = ExtResource("5_4kjpx")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-
-[node name="WrongPlace" type="NinePatchRect" parent="."]
-layout_mode = 2
-texture = ExtResource("6_jwc7g")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="Empty" type="NinePatchRect" parent="."]
-layout_mode = 2
-texture = ExtResource("7_j51s1")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="KeyboardTile" type="NinePatchRect" parent="."]
-layout_mode = 2
-texture = ExtResource("8_xdfqj")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+[node name="Border" type="NinePatchRect" parent="KeyRow3/Enter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wa2e0")
+draw_center = false
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 36, 36)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [connection signal="pressed" from="KeyRow2/BackSpace" to="." method="_on_BackSpace_pressed"]
 [connection signal="pressed" from="KeyRow3/Enter" to="." method="_on_Enter_pressed"]

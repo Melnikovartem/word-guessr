@@ -12,8 +12,8 @@ config_version=5
 
 config/name="WordGuessr"
 run/main_scene="res://Main/main.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.png"
 
 [autoload]
 
@@ -26,6 +26,7 @@ Bridge="*res://addons/instant_games_bridge/bridge.gd"
 window/size/viewport_width=480
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
 
 [editor_plugins]
 
