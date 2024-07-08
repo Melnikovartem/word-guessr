@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be308v1t0speb"
-path="res://.godot/imported/Background_sky.png-e16d085cc34c0b2982726c8f95090039.ctex"
+uid="uid://denlgx410d2g2"
+path="res://.godot/imported/Dawn_Background.png-b6bc5f31e8ab5e372db3c7abe1bb8a4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Background_sky.png"
-dest_files=["res://.godot/imported/Background_sky.png-e16d085cc34c0b2982726c8f95090039.ctex"]
+source_file="res://Assets/Backgrounds/Dawn_Background.png"
+dest_files=["res://.godot/imported/Dawn_Background.png-b6bc5f31e8ab5e372db3c7abe1bb8a4d.ctex"]
 
 [params]
 

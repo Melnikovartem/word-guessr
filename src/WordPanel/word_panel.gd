@@ -29,7 +29,7 @@ func update_color_panel(check_letter: globals.LetterState, attempt_number: int, 
 	var panel := word_rows[attempt_number].get_node("Letter" + str(letter_number)) as NinePatchRect
 	assert(panel)
 	match check_letter:
-		
+			
 		globals.LetterState.NOT_IN_WORD:
 			panel.texture = globals.LetterColor.NOT_IN_WORD
 			panel.draw_center = true

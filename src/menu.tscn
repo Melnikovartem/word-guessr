@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://rqipsmpdmc6"]
+
+[ext_resource type="Texture2D" uid="uid://be308v1t0speb" path="res://Assets/Backgrounds/Background_night.png" id="1_dlno5"]
+[ext_resource type="Texture2D" uid="uid://bxswm06tuxh63" path="res://Assets/ButtonTextures/ContinueButtonNight.png" id="2_34pah"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 478.0
+offset_bottom = 720.0
+texture = ExtResource("1_dlno5")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 152.0
+offset_top = 198.0
+offset_right = 372.0
+offset_bottom = 267.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Button"]
+position = Vector2(110, 38)
+texture = ExtResource("2_34pah")

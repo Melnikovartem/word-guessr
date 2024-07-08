@@ -28,7 +28,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("1_qi63b")
-draw_center = false
 region_rect = Rect2(0, 0, 36, 36)
 patch_margin_left = 2
 patch_margin_top = 2

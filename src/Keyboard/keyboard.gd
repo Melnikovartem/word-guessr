@@ -61,3 +61,7 @@ func _on_BackSpace_pressed() -> void:
 
 func _on_Enter_pressed() -> void:
 	_send_input_event_with_keycode(KEY_ENTER)
+
+
+func _on_button_pressed():
+	pass # Replace with function body.
