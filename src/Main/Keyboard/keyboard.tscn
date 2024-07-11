@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmfq6ywgajjru"]
 
-[ext_resource type="Script" path="res://Keyboard/keyboard.gd" id="1_4iejr"]
+[ext_resource type="Script" path="res://Main/Keyboard/keyboard.gd" id="1_4iejr"]
 [ext_resource type="Theme" uid="uid://547ss0jtj6ek" path="res://pixel_butt.tres" id="2_x0a7e"]
 [ext_resource type="FontFile" uid="uid://dja437l1n87pc" path="res://Assets/Fonts/CustomFontTtf12H10.ttf" id="3_ya3u7"]
 [ext_resource type="Texture2D" uid="uid://bpp04ell6xcac" path="res://Assets/ButtonTextures/KeyboardTile.png" id="4_wa2e0"]

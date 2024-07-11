@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_c1sqs"]
 [ext_resource type="Texture2D" uid="uid://be308v1t0speb" path="res://Assets/Backgrounds/Background_night.png" id="2_g36e4"]
-[ext_resource type="PackedScene" uid="uid://dmfq6ywgajjru" path="res://Keyboard/keyboard.tscn" id="2_n6ak2"]
-[ext_resource type="PackedScene" uid="uid://deix83al7wy2d" path="res://WordPanel/word_panel.tscn" id="2_t01va"]
-[ext_resource type="Script" path="res://WordPanel/word_panel.gd" id="3_ofuck"]
-[ext_resource type="Script" path="res://Main/TextureRect.gd" id="3_ss4w5"]
+[ext_resource type="PackedScene" uid="uid://dmfq6ywgajjru" path="res://Main/Keyboard/keyboard.tscn" id="2_n6ak2"]
+[ext_resource type="PackedScene" uid="uid://deix83al7wy2d" path="res://Main/WordPanel/word_panel.tscn" id="2_t01va"]
+[ext_resource type="Script" path="res://Main/WordPanel/word_panel.gd" id="3_ofuck"]
+[ext_resource type="Script" path="res://Main/background.gd" id="3_ss4w5"]
 [ext_resource type="Theme" uid="uid://547ss0jtj6ek" path="res://pixel_butt.tres" id="5_wwvoo"]
 [ext_resource type="LabelSettings" uid="uid://cv08cvrbiue58" path="res://Assets/Fonts/LabelSettings.tres" id="6_bvjnc"]
 [ext_resource type="Texture2D" uid="uid://cnq6elw3g7vln" path="res://Assets/ButtonTextures/Help_Button.png" id="8_4kor1"]
@@ -17,7 +17,7 @@ script = ExtResource("1_c1sqs")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(241, 361)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BackGround" type="TextureRect" parent="."]
 offset_left = -1.0
 offset_top = -1.0
 offset_right = 481.0

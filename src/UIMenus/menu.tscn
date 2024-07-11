@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://rqipsmpdmc6"]
 
 [ext_resource type="Texture2D" uid="uid://be308v1t0speb" path="res://Assets/Backgrounds/Background_night.png" id="1_dlno5"]
-[ext_resource type="Script" path="res://menu.gd" id="1_uggb4"]
+[ext_resource type="Script" path="res://UIMenus/menu.gd" id="1_uggb4"]
 [ext_resource type="Texture2D" uid="uid://bxswm06tuxh63" path="res://Assets/ButtonTextures/ContinueButtonNight.png" id="2_34pah"]
 [ext_resource type="Texture2D" uid="uid://t0p2jtf8vl3v" path="res://Assets/ButtonTextures/NewGButtonNight.png" id="3_nsijt"]
 [ext_resource type="Texture2D" uid="uid://cf7nf27bs2d2t" path="res://Assets/ButtonTextures/OptionsButtonNight.png" id="4_3yepy"]
