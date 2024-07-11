@@ -103,5 +103,4 @@ texture = ExtResource("9_5hjh0")
 
 [connection signal="pressed" from="NewGameUI/NewGameButton" to="." method="reset_game"]
 [connection signal="pressed" from="Help_Button" to="." method="reset_game"]
-[connection signal="pressed" from="Options_Button" to="TextureRect" method="change_BG"]
-[connection signal="pressed" from="Options_Button" to="TextureRect" method="_on_options_button_pressed"]
+[connection signal="pressed" from="Options_Button" to="." method="open_menu"]

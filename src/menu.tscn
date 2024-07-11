@@ -1,21 +1,81 @@
-[gd_scene load_steps=3 format=3 uid="uid://rqipsmpdmc6"]
+[gd_scene load_steps=9 format=3 uid="uid://rqipsmpdmc6"]
 
 [ext_resource type="Texture2D" uid="uid://be308v1t0speb" path="res://Assets/Backgrounds/Background_night.png" id="1_dlno5"]
+[ext_resource type="Script" path="res://menu.gd" id="1_uggb4"]
 [ext_resource type="Texture2D" uid="uid://bxswm06tuxh63" path="res://Assets/ButtonTextures/ContinueButtonNight.png" id="2_34pah"]
+[ext_resource type="Texture2D" uid="uid://t0p2jtf8vl3v" path="res://Assets/ButtonTextures/NewGButtonNight.png" id="3_nsijt"]
+[ext_resource type="Texture2D" uid="uid://cf7nf27bs2d2t" path="res://Assets/ButtonTextures/OptionsButtonNight.png" id="4_3yepy"]
+[ext_resource type="Texture2D" uid="uid://b20l543mbm3uf" path="res://Assets/ButtonTextures/ExitButtonNight.png" id="5_vy0n0"]
+[ext_resource type="Texture2D" uid="uid://dorbexdoxv8t5" path="res://Assets/ButtonTextures/Close_Button.png" id="6_n2o5o"]
+[ext_resource type="Texture2D" uid="uid://cnq6elw3g7vln" path="res://Assets/ButtonTextures/Help_Button.png" id="7_34p4s"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_uggb4")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 478.0
+offset_right = 480.0
 offset_bottom = 720.0
 texture = ExtResource("1_dlno5")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 152.0
-offset_top = 198.0
-offset_right = 372.0
-offset_bottom = 267.0
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 102.0
+offset_top = 156.0
+offset_right = 368.0
+offset_bottom = 254.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Button"]
-position = Vector2(110, 38)
+[node name="Sprite2D" type="Sprite2D" parent="ContinueButton"]
+position = Vector2(123.5, 52)
+scale = Vector2(0.962329, 1)
 texture = ExtResource("2_34pah")
+
+[node name="NewGameButton" type="Button" parent="."]
+offset_left = 99.0
+offset_top = 287.0
+offset_right = 376.0
+offset_bottom = 363.0
+
+[node name="Sprite2D" type="Sprite2D" parent="NewGameButton"]
+position = Vector2(131, 39)
+texture = ExtResource("3_nsijt")
+
+[node name="OptionsButton" type="Button" parent="."]
+offset_left = 93.0
+offset_top = 417.0
+offset_right = 334.0
+offset_bottom = 497.0
+
+[node name="Sprite2D" type="Sprite2D" parent="OptionsButton"]
+position = Vector2(131, 26)
+texture = ExtResource("4_3yepy")
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 105.0
+offset_top = 531.0
+offset_right = 300.0
+offset_bottom = 596.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ExitButton"]
+position = Vector2(119, 29)
+texture = ExtResource("5_vy0n0")
+
+[node name="CloseButton" type="Button" parent="."]
+offset_left = 423.0
+offset_top = 11.0
+offset_right = 473.0
+offset_bottom = 55.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CloseButton"]
+position = Vector2(24, 21)
+texture = ExtResource("6_n2o5o")
+
+[node name="HelpButton" type="Button" parent="."]
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 61.0
+offset_bottom = 65.0
+
+[node name="Sprite2D" type="Sprite2D" parent="HelpButton"]
+position = Vector2(22, 19)
+texture = ExtResource("7_34p4s")
+
+[connection signal="pressed" from="CloseButton" to="." method="close_menu"]

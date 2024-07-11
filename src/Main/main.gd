@@ -217,3 +217,8 @@ func check_word(word: String, correct_word: String) -> Array[globals.LetterState
 			result[i] = globals.LetterState.NOT_IN_WORD
 
 	return result
+
+
+func open_menu():
+	get_tree().change_scene_to_file("res://menu.tscn")
+	
