@@ -1,7 +1,7 @@
 class_name WordPanel
 extends CanvasLayer
 
-var word_row_scene = preload("res://WordPanel/word_row.tscn")
+var word_row_scene = preload("res://Main/WordPanel/word_row.tscn")
 
 var word_rows: Array[HBoxContainer] = []
 
@@ -22,14 +22,10 @@ func update_letter_panel(letter: String, attempt_number: int, letter_number: int
 	assert(label)
 	label.text = letter
 
-
-var new_texture = preload("res://Assets/ButtonTextures/KeyboardTile.png")
-
 func update_color_panel(check_letter: globals.LetterState, attempt_number: int, letter_number: int) -> void:
 	var panel := word_rows[attempt_number].get_node("Letter" + str(letter_number)) as NinePatchRect
 	assert(panel)
 	match check_letter:
-			
 		globals.LetterState.NOT_IN_WORD:
 			panel.texture = globals.LetterColor.NOT_IN_WORD
 			panel.draw_center = true

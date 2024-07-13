@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-var letter_scene = preload("res://WordPanel/one_letter.tscn")
+var letter_scene = preload("res://Main/WordPanel/one_letter.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

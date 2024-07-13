@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://8n3gpu1kl4xo"]
+[gd_scene load_steps=12 format=3 uid="uid://8n3gpu1kl4xo"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_c1sqs"]
 [ext_resource type="Texture2D" uid="uid://be308v1t0speb" path="res://Assets/Backgrounds/Background_night.png" id="2_g36e4"]
@@ -6,10 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://deix83al7wy2d" path="res://Main/WordPanel/word_panel.tscn" id="2_t01va"]
 [ext_resource type="Script" path="res://Main/WordPanel/word_panel.gd" id="3_ofuck"]
 [ext_resource type="Script" path="res://Main/background.gd" id="3_ss4w5"]
-[ext_resource type="Theme" uid="uid://547ss0jtj6ek" path="res://pixel_butt.tres" id="5_wwvoo"]
 [ext_resource type="LabelSettings" uid="uid://cv08cvrbiue58" path="res://Assets/Fonts/LabelSettings.tres" id="6_bvjnc"]
 [ext_resource type="Texture2D" uid="uid://cnq6elw3g7vln" path="res://Assets/ButtonTextures/Help_Button.png" id="8_4kor1"]
+[ext_resource type="FontFile" uid="uid://dja437l1n87pc" path="res://Assets/Fonts/CustomFontTtf12H10.ttf" id="8_nr0fv"]
 [ext_resource type="Texture2D" uid="uid://c0aya5puwvh7t" path="res://Assets/ButtonTextures/Options_button.png" id="9_5hjh0"]
+
+[sub_resource type="Theme" id="Theme_qrwaw"]
+Button/font_sizes/font_size = 55
+Button/fonts/font = ExtResource("8_nr0fv")
+Button/styles/normal = null
 
 [node name="Main" type="Node"]
 script = ExtResource("1_c1sqs")
@@ -31,6 +36,7 @@ script = ExtResource("3_ofuck")
 
 [node name="Keyboard" parent="." instance=ExtResource("2_n6ak2")]
 unique_name_in_owner = true
+visible = false
 offset_left = 10.0
 offset_top = -210.0
 offset_right = -10.0
@@ -75,7 +81,7 @@ offset_top = -20.0
 offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("5_wwvoo")
+theme = SubResource("Theme_qrwaw")
 text = "NEW GAME"
 
 [node name="Help_Button" type="Button" parent="."]
