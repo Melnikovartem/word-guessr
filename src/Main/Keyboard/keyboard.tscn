@@ -1,9 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmfq6ywgajjru"]
 
-[ext_resource type="Script" path="res://Keyboard/keyboard.gd" id="1_4iejr"]
-[ext_resource type="Theme" uid="uid://547ss0jtj6ek" path="res://pixel_butt.tres" id="2_x0a7e"]
+[ext_resource type="Script" path="res://Main/Keyboard/keyboard.gd" id="1_4iejr"]
 [ext_resource type="FontFile" uid="uid://dja437l1n87pc" path="res://Assets/Fonts/CustomFontTtf12H10.ttf" id="3_ya3u7"]
 [ext_resource type="Texture2D" uid="uid://bpp04ell6xcac" path="res://Assets/ButtonTextures/KeyboardTile.png" id="4_wa2e0"]
+
+[sub_resource type="Theme" id="Theme_qrwaw"]
+Button/font_sizes/font_size = 55
+Button/fonts/font = ExtResource("3_ya3u7")
+Button/styles/normal = null
 
 [node name="Keyboard" type="VBoxContainer"]
 anchors_preset = 12
@@ -21,7 +25,7 @@ size_flags_vertical = 3
 
 [node name="Q" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 theme_override_fonts/font = ExtResource("3_ya3u7")
 text = "q"
 
@@ -42,7 +46,7 @@ patch_margin_bottom = 2
 
 [node name="W" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "w"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow1/W"]
@@ -62,7 +66,7 @@ patch_margin_bottom = 2
 
 [node name="E" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "e"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow1/E"]
@@ -82,7 +86,7 @@ patch_margin_bottom = 2
 
 [node name="R" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "r"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow1/R"]
@@ -102,7 +106,7 @@ patch_margin_bottom = 2
 
 [node name="T" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "t"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow1/T"]
@@ -122,7 +126,7 @@ patch_margin_bottom = 2
 
 [node name="Y" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "y"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow1/Y"]
@@ -142,7 +146,7 @@ patch_margin_bottom = 2
 
 [node name="U" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "u"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow1/U"]
@@ -162,7 +166,7 @@ patch_margin_bottom = 2
 
 [node name="I" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "i"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow1/I"]
@@ -182,7 +186,7 @@ patch_margin_bottom = 2
 
 [node name="O" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "o"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow1/O"]
@@ -202,7 +206,7 @@ patch_margin_bottom = 2
 
 [node name="P" type="Button" parent="KeyRow1" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "p"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow1/P"]
@@ -227,7 +231,7 @@ size_flags_vertical = 3
 
 [node name="A" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "a"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow2/A"]
@@ -247,7 +251,7 @@ patch_margin_bottom = 2
 
 [node name="S" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "s"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow2/S"]
@@ -267,7 +271,7 @@ patch_margin_bottom = 2
 
 [node name="D" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "d"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow2/D"]
@@ -287,7 +291,7 @@ patch_margin_bottom = 2
 
 [node name="F" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "f"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow2/F"]
@@ -307,7 +311,7 @@ patch_margin_bottom = 2
 
 [node name="G" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "g"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow2/G"]
@@ -327,7 +331,7 @@ patch_margin_bottom = 2
 
 [node name="H" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "h"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow2/H"]
@@ -347,7 +351,7 @@ patch_margin_bottom = 2
 
 [node name="J" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "j"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow2/J"]
@@ -367,7 +371,7 @@ patch_margin_bottom = 2
 
 [node name="K" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "k"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow2/K"]
@@ -387,7 +391,7 @@ patch_margin_bottom = 2
 
 [node name="L" type="Button" parent="KeyRow2" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "l"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow2/L"]
@@ -408,7 +412,7 @@ patch_margin_bottom = 2
 [node name="BackSpace" type="Button" parent="KeyRow2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "<--"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow2/BackSpace"]
@@ -430,11 +434,11 @@ patch_margin_bottom = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 
 [node name="Z" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "z"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow3/Z"]
@@ -454,7 +458,7 @@ patch_margin_bottom = 2
 
 [node name="X" type="Button" parent="KeyRow3" groups=["letter_keys"]]
 layout_mode = 2
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "x"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow3/X"]
@@ -570,7 +574,7 @@ patch_margin_bottom = 2
 [node name="Enter" type="Button" parent="KeyRow3"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_x0a7e")
+theme = SubResource("Theme_qrwaw")
 text = "Enter"
 
 [node name="Border" type="NinePatchRect" parent="KeyRow3/Enter"]

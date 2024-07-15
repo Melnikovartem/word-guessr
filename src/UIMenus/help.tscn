@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxbbqflkwm80w"]
 
-[ext_resource type="Script" path="res://help.gd" id="1_af7mw"]
+[ext_resource type="Script" path="res://UIMenus/help.gd" id="1_af7mw"]
 [ext_resource type="Texture2D" uid="uid://be308v1t0speb" path="res://Assets/Backgrounds/Background_night.png" id="1_p8yxe"]
 
 [node name="Node2D" type="Node2D"]

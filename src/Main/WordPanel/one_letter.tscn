@@ -3,7 +3,7 @@
 [ext_resource type="LabelSettings" uid="uid://cv08cvrbiue58" path="res://Assets/Fonts/LabelSettings.tres" id="1_aaaow"]
 [ext_resource type="Texture2D" uid="uid://janfrj22si1e" path="res://Assets/ButtonTextures/Empty.png" id="1_qi63b"]
 
-[node name="Letter1" type="NinePatchRect"]
+[node name="Letter" type="NinePatchRect"]
 offset_right = 72.0
 offset_bottom = 72.0
 grow_horizontal = 2
