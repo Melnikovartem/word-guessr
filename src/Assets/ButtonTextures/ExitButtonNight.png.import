@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be308v1t0speb"
-path="res://.godot/imported/Background_sky.png-e16d085cc34c0b2982726c8f95090039.ctex"
+uid="uid://b20l543mbm3uf"
+path="res://.godot/imported/ExitButtonNight.png-60d2153d49233f30c3d87f5ae167baa6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Background_sky.png"
-dest_files=["res://.godot/imported/Background_sky.png-e16d085cc34c0b2982726c8f95090039.ctex"]
+source_file="res://Assets/ButtonTextures/ExitButtonNight.png"
+dest_files=["res://.godot/imported/ExitButtonNight.png-60d2153d49233f30c3d87f5ae167baa6.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dlxfe08n2a1ti"]
 
-[ext_resource type="Script" path="res://WordPanel/word_row.gd" id="1_43x4a"]
+[ext_resource type="Script" path="res://Main/WordPanel/word_row.gd" id="1_43x4a"]
 
 [node name="WordRow" type="HBoxContainer"]
 size_flags_horizontal = 3

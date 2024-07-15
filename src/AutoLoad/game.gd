@@ -1,15 +1,9 @@
-extends Node
-
 var word_to_guess := ""
+
 
 var attempts: Array[String] = []
 var current_letters: Array[String] = []
 var score := 0
-
-@onready var message := %WordPanel/Message as Label
-@onready var keyboard := %Keyboard as Keyboard
-@onready var word_panel := %WordPanel as WordPanel
-@onready var new_game_ui := %NewGameUI as Control
 
 func reset_game():
 	word_to_guess = word_list.get_new_word()
@@ -121,69 +115,6 @@ func _ready():
 func get_score(attempts_taken):
 	return globals.NUMBER_OF_ATTEMPTS - attempts_taken
 
-func _input(event: InputEvent):
-	var key_event := event as InputEventKey
-	
-	if not key_event or not key_event.pressed:
-		return
-	
-	if keyboard.visible == false:
-		if key_event.unicode != 0:
-			return
-
-		# reset_game()
-		return
-		
-	if key_event.unicode != 0:
-		var letter := char(key_event.unicode).to_upper()
-		if current_letters.size() < globals.NUMBER_OF_LETTERS:
-			word_panel.update_letter_panel(letter, attempts.size(), current_letters.size())
-			current_letters.append(letter)
-			_save_current_letters()
-	elif key_event.keycode == KEY_BACKSPACE:
-		if current_letters.size() > 0:
-			word_panel.update_letter_panel("",  attempts.size(), current_letters.size() - 1)
-			current_letters.pop_back()
-			_save_current_letters()
-	elif key_event.keycode == KEY_ENTER:
-		if current_letters.size() < globals.NUMBER_OF_LETTERS:
-			message.text = "Type %d letters" % globals.NUMBER_OF_LETTERS
-			return
-		var word_attempt = "".join(current_letters).to_lower()
-		var success := update_board_word(word_attempt, attempts.size())
-		
-		if success == ERR_UNAVAILABLE:
-			message.text = "Not in dictionary"
-			return
-			
-		if success == OK:
-			message.text = "You Win!"
-			end_game(true)
-			return
-		
-		attempts.push_back(word_attempt)
-		_save_attempts()
-		if attempts.size() >= globals.NUMBER_OF_ATTEMPTS:
-			message.text = "The word was " + word_to_guess
-			end_game()
-			return
-		current_letters = []
-		message.text = "WORDS BITE"
-
-func update_board_word(word_attempt: String, current_attempt: int) -> Error:
-	var attempt_result := check_word(word_attempt, word_to_guess)
-	
-	if attempt_result[0] == globals.LetterState.NOT_CHECKED:
-		return ERR_UNAVAILABLE
-	
-	for i in range(globals.NUMBER_OF_LETTERS):
-		word_panel.update_color_panel(attempt_result[i], current_attempt, i)
-		keyboard.change_letter_key_color(word_attempt[i], attempt_result[i])
-		
-	if word_attempt == word_to_guess:
-		return OK
-	return FAILED
-
 func check_word(word: String, correct_word: String) -> Array[globals.LetterState]:
 	var result: Array[globals.LetterState] = [
 		globals.LetterState.NOT_CHECKED,
@@ -215,8 +146,3 @@ func check_word(word: String, correct_word: String) -> Array[globals.LetterState
 			result[i] = globals.LetterState.NOT_IN_WORD
 
 	return result
-
-
-func open_menu():
-	get_tree().change_scene_to_file("res://menu.tscn")
-	
