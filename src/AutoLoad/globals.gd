@@ -19,5 +19,5 @@ const KeyboardColor := {
 	
 }
 
-const NUMBER_OF_ATTEMPTS = 6
-const NUMBER_OF_LETTERS = 5
+const NUMBER_OF_ATTEMPTS = 7
+const NUMBER_OF_LETTERS = 2

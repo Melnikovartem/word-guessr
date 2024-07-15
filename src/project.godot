@@ -20,6 +20,7 @@ config/icon="res://icon.png"
 globals="*res://AutoLoad/globals.gd"
 word_list="*res://AutoLoad/word_list.gd"
 Bridge="*res://addons/instant_games_bridge/bridge.gd"
+GlobalInfo="*res://AutoLoad/global_info.tscn"
 
 [display]
 

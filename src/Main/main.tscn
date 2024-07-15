@@ -101,6 +101,17 @@ position = Vector2(20.25, 19.25)
 scale = Vector2(0.759616, 0.759616)
 texture = ExtResource("9_5hjh0")
 
+[node name="MenuButton" type="MenuButton" parent="."]
+unique_name_in_owner = true
+offset_left = 13.0
+offset_top = 87.0
+offset_right = 48.0
+offset_bottom = 117.0
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuButton"]
+position = Vector2(22, 10)
+texture = ExtResource("9_5hjh0")
+
 [connection signal="pressed" from="NewGameUI/NewGameButton" to="." method="reset_game"]
 [connection signal="pressed" from="Help_Button" to="." method="reset_game"]
 [connection signal="pressed" from="Options_Button" to="." method="open_menu"]

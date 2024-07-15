@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://rqipsmpdmc6"]
+[gd_scene load_steps=10 format=3 uid="uid://rqipsmpdmc6"]
 
 [ext_resource type="Texture2D" uid="uid://be308v1t0speb" path="res://Assets/Backgrounds/Background_night.png" id="1_dlno5"]
 [ext_resource type="Script" path="res://menu.gd" id="1_uggb4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://t0p2jtf8vl3v" path="res://Assets/ButtonTextures/NewGButtonNight.png" id="3_nsijt"]
 [ext_resource type="Texture2D" uid="uid://cf7nf27bs2d2t" path="res://Assets/ButtonTextures/OptionsButtonNight.png" id="4_3yepy"]
 [ext_resource type="Texture2D" uid="uid://b20l543mbm3uf" path="res://Assets/ButtonTextures/ExitButtonNight.png" id="5_vy0n0"]
+[ext_resource type="Script" path="res://ExitButton.gd" id="6_ehspn"]
 [ext_resource type="Texture2D" uid="uid://dorbexdoxv8t5" path="res://Assets/ButtonTextures/Close_Button.png" id="6_n2o5o"]
 [ext_resource type="Texture2D" uid="uid://cnq6elw3g7vln" path="res://Assets/ButtonTextures/Help_Button.png" id="7_34p4s"]
 
@@ -53,6 +54,7 @@ offset_left = 105.0
 offset_top = 531.0
 offset_right = 300.0
 offset_bottom = 596.0
+script = ExtResource("6_ehspn")
 
 [node name="Sprite2D" type="Sprite2D" parent="ExitButton"]
 position = Vector2(119, 29)
@@ -78,4 +80,5 @@ offset_bottom = 65.0
 position = Vector2(22, 19)
 texture = ExtResource("7_34p4s")
 
+[connection signal="pressed" from="ExitButton" to="." method="close_menu"]
 [connection signal="pressed" from="CloseButton" to="." method="close_menu"]

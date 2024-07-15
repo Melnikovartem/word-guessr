@@ -12,8 +12,8 @@ func _ready():
 		%WordRows.add_child(word_row)
 
 func flush_panel():
-	for i in range(globals.NUMBER_OF_ATTEMPTS):
-		for j in range(globals.NUMBER_OF_LETTERS):
+	for i in range(globals.NUMBER_OF_ATTEMPTS): #это константа, цикл 6 раз
+		for j in range(globals.NUMBER_OF_LETTERS):# тоже константа, цикл 5 раз
 			update_letter_panel("", i, j)
 			update_color_panel(globals.LetterState.NOT_CHECKED, i, j)
 			

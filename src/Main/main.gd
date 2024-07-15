@@ -8,17 +8,17 @@ var attempts: Array[String] = []
 var current_letters: Array[String] = []
 var score := 0
 
-@onready var message := %WordPanel/Message as Label
+@onready var message := %WordPanel/Message as Label #заменяет путь на переменную для удобства
 @onready var keyboard := %Keyboard as Keyboard
 @onready var word_panel := %WordPanel as WordPanel
 @onready var new_game_ui := %NewGameUI as Control
 
 func reset_game():
-	word_to_guess = word_list.get_new_word()
+	word_to_guess = word_list.get_new_word() # из глобального ворд листа берешь новое слово с помощью функции get new word(она также в глобальном файле)
 	attempts = []
 	current_letters = []
 	
-	keyboard.flush_keyboard()
+	keyboard.flush_keyboard()#чистит клавиатуру
 	word_panel.flush_panel()
 	
 	message.text = "WORDS BITE"
@@ -119,6 +119,12 @@ func _ready():
 	
 	if word_to_guess == null or word_to_guess.is_empty():
 		reset_game()
+	
+	%MenuButton.get_popup().add_item("continue")
+	%MenuButton.get_popup().add_item("options")
+	%MenuButton.get_popup().add_item("new game")
+	%MenuButton.get_popup().add_item("exit")
+	
 	
 func get_score(attempts_taken):
 	return globals.NUMBER_OF_ATTEMPTS - attempts_taken

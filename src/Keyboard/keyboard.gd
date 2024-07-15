@@ -3,25 +3,26 @@ extends VBoxContainer
 
 
 func _ready() -> void:
-	for node in get_tree().get_nodes_in_group("letter_keys"):
-		var key := node as Button
-		assert(key)
-		var letter_unicode := _char_to_ascii_int(key.text.to_lower())
+	for node in get_tree().get_nodes_in_group("letter_keys"):#получает все буквы клавиатуры(т.к они добавлены в группу letter keys)
+		var key := node as Button 
+		assert(key) #? 
+		var letter_unicode := _char_to_ascii_int(key.text.to_lower()) #все буквы переводятся в ascii
 		key.pressed.connect(_send_input_event_with_unicode.bind(letter_unicode))
+		#при нажатии на любую кнпоку клавы, вызывается функция send_input_event_with_unicode
+		#что делает эта функция я не поняла
 
-
-func flush_keyboard():
+func flush_keyboard(): #делает все клавиши клавиатуры белыми, чистит ее
 	for node in get_tree().get_nodes_in_group("letter_keys"):
 		var key := node as Button
 		assert(key)
-		key.self_modulate = Color.WHITE
+		key.self_modulate = Color.WHITE # c помощью метода self modulate
 			
 func change_letter_key_color(letter: String, check_letter: globals.LetterState) -> void:
 	for node in get_tree().get_nodes_in_group("letter_keys"):
 		var key := node as Button
 		assert(key)
 		if letter == key.text.to_lower():
-			match check_letter:
+			match check_letter: #соотносит набранную букву с ее статусом, не совсем понимаю как
 				globals.LetterState.NOT_CHECKED:
 					key.self_modulate = Color.WHITE
 				globals.LetterState.NOT_IN_WORD:
@@ -42,7 +43,7 @@ func _char_to_ascii_int(letter: String) -> int:
 
 
 func _send_input_event_with_unicode(unicode: int) -> void:
-	var event := InputEventKey.new()
+	var event := InputEventKey.new()#
 	event.pressed = true
 	event.unicode = unicode
 	Input.parse_input_event(event)
