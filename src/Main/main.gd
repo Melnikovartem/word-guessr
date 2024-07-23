@@ -29,7 +29,7 @@ func reset_game():
 	_save_current_letters()
 		
 func end_game(win: bool = false):
-	Bridge.advertisement.show_rewarded()
+	Bridge.advertisement.show_interstitial() 
 	if win:
 		score += globals.NUMBER_OF_ATTEMPTS - attempts.size() + 1
 		_save_score()
@@ -111,12 +111,12 @@ func _save_score():
 func _ready():
 	Bridge.advertisement.set_minimum_delay_between_interstitial(30)
 	randomize()
-	_reset_state()
+	# _reset_state()
 	_load_state()
+	Bridge.advertisement.show_interstitial()
 	
 	if word_to_guess == null or word_to_guess.is_empty():
 		reset_game()
-	Bridge.advertisement.show_rewarded()
 	
 func get_score(attempts_taken):
 	return globals.NUMBER_OF_ATTEMPTS - attempts_taken
