@@ -20,3 +20,11 @@ const KeyboardColor := {
 
 const NUMBER_OF_ATTEMPTS = 6
 const NUMBER_OF_LETTERS = 5
+
+var difficulty: String = "Easy"
+
+func set_difficulty(new_difficulty: String):
+	difficulty = new_difficulty
+
+func get_difficulty() -> String:
+	return difficulty

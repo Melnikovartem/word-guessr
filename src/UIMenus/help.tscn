@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxbbqflkwm80w"]
+[gd_scene load_steps=4 format=3 uid="uid://bxbbqflkwm80w"]
 
 [ext_resource type="Script" path="res://UIMenus/help.gd" id="1_af7mw"]
-[ext_resource type="Texture2D" uid="uid://be308v1t0speb" path="res://Assets/Backgrounds/Background_night.png" id="1_p8yxe"]
+[ext_resource type="Texture2D" uid="uid://ui8riypyywf5" path="res://Assets/Backgrounds/Help background.png" id="1_vi7ra"]
+[ext_resource type="Texture2D" uid="uid://nd27p371633h" path="res://Assets/ButtonTextures/Close_ButtonNight.png" id="3_q36ku"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_af7mw")
@@ -9,4 +10,16 @@ script = ExtResource("1_af7mw")
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_p8yxe")
+texture = ExtResource("1_vi7ra")
+
+[node name="Button_Close" type="Button" parent="."]
+offset_left = 422.0
+offset_top = 6.0
+offset_right = 472.0
+offset_bottom = 56.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Button_Close"]
+position = Vector2(24, 26)
+texture = ExtResource("3_q36ku")
+
+[connection signal="pressed" from="Button_Close" to="." method="close_menu"]

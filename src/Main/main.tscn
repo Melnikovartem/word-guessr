@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://8n3gpu1kl4xo"]
+[gd_scene load_steps=16 format=3 uid="uid://8n3gpu1kl4xo"]
 
 [ext_resource type="Script" path="res://Main/main.gd" id="1_c1sqs"]
 [ext_resource type="Texture2D" uid="uid://be308v1t0speb" path="res://Assets/Backgrounds/Background_night.png" id="2_g36e4"]
@@ -7,9 +7,13 @@
 [ext_resource type="Script" path="res://Main/WordPanel/word_panel.gd" id="3_ofuck"]
 [ext_resource type="Script" path="res://Main/background.gd" id="3_ss4w5"]
 [ext_resource type="LabelSettings" uid="uid://cv08cvrbiue58" path="res://Assets/Fonts/LabelSettings.tres" id="6_bvjnc"]
-[ext_resource type="Texture2D" uid="uid://cnq6elw3g7vln" path="res://Assets/ButtonTextures/Help_Button.png" id="8_4kor1"]
 [ext_resource type="FontFile" uid="uid://dja437l1n87pc" path="res://Assets/Fonts/CustomFontTtf12H10.ttf" id="8_nr0fv"]
-[ext_resource type="Texture2D" uid="uid://c0aya5puwvh7t" path="res://Assets/ButtonTextures/Options_button.png" id="9_5hjh0"]
+[ext_resource type="Script" path="res://Main/Help_Button.gd" id="9_41mri"]
+[ext_resource type="Texture2D" uid="uid://dncrjo6a8c2xs" path="res://Assets/ButtonTextures/HelpButtonNight.png" id="10_840js"]
+[ext_resource type="Texture2D" uid="uid://c0gnd2fwq1is8" path="res://Assets/ButtonTextures/MenuButtonNight.png" id="11_20d24"]
+[ext_resource type="Texture2D" uid="uid://2fl8x2sm8uh" path="res://Assets/ButtonTextures/NewGameNight.png" id="11_cnss5"]
+[ext_resource type="Texture2D" uid="uid://ui8riypyywf5" path="res://Assets/Backgrounds/Help background.png" id="13_xwyyc"]
+[ext_resource type="Texture2D" uid="uid://nd27p371633h" path="res://Assets/ButtonTextures/Close_ButtonNight.png" id="14_lq586"]
 
 [sub_resource type="Theme" id="Theme_qrwaw"]
 Button/font_sizes/font_size = 55
@@ -87,16 +91,29 @@ text = "NEW GAME"
 [node name="Help_Button" type="Button" parent="."]
 unique_name_in_owner = true
 offset_left = 12.0
-offset_top = 10.0
+offset_top = 12.0
 offset_right = 55.0
 offset_bottom = 53.0
+script = ExtResource("9_41mri")
 
 [node name="Sprite2D" type="Sprite2D" parent="Help_Button"]
-position = Vector2(22, 22)
+position = Vector2(22, 19)
 scale = Vector2(0.776442, 0.75153)
-texture = ExtResource("8_4kor1")
+texture = ExtResource("10_840js")
+
+[node name="NewgameTop" type="Button" parent="."]
+offset_left = 428.0
+offset_top = 11.0
+offset_right = 470.0
+offset_bottom = 51.0
+
+[node name="Sprite2D" type="Sprite2D" parent="NewgameTop"]
+position = Vector2(22, 20)
+scale = Vector2(0.730769, 0.730769)
+texture = ExtResource("11_cnss5")
 
 [node name="Options_Button" type="Button" parent="."]
+visible = false
 offset_left = 425.0
 offset_top = 13.0
 offset_right = 465.0
@@ -105,8 +122,28 @@ offset_bottom = 52.0
 [node name="Sprite2D" type="Sprite2D" parent="Options_Button"]
 position = Vector2(20.25, 19.25)
 scale = Vector2(0.759616, 0.759616)
-texture = ExtResource("9_5hjh0")
+texture = ExtResource("11_20d24")
+
+[node name="HelpRect" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("13_xwyyc")
+
+[node name="CloseHelpButton" type="Button" parent="."]
+visible = false
+offset_left = 430.0
+offset_top = 12.0
+offset_right = 470.0
+offset_bottom = 50.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CloseHelpButton"]
+position = Vector2(20.5, 18.5)
+scale = Vector2(0.711538, 0.711538)
+texture = ExtResource("14_lq586")
 
 [connection signal="pressed" from="NewGameUI/NewGameButton" to="." method="reset_game"]
-[connection signal="pressed" from="Help_Button" to="." method="reset_game"]
+[connection signal="pressed" from="Help_Button" to="." method="open_help"]
+[connection signal="pressed" from="NewgameTop" to="." method="reset_game"]
 [connection signal="pressed" from="Options_Button" to="." method="open_menu"]
+[connection signal="pressed" from="CloseHelpButton" to="." method="close_help"]

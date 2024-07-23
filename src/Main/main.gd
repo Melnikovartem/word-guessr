@@ -218,5 +218,15 @@ func check_word(word: String, correct_word: String) -> Array[globals.LetterState
 
 
 func open_menu():
-	get_tree().change_scene_to_file("res://menu.tscn")
+	get_tree().change_scene_to_file("res://UIMenus/menu.tscn")
+	
+func open_help():
+	$HelpRect.visible = true
+	%WordPanel.visible = false
+	$CloseHelpButton.visible = true
+
+func close_help():
+	$HelpRect.visible = false
+	%WordPanel.visible = true
+	$CloseHelpButton.visible = false
 	
